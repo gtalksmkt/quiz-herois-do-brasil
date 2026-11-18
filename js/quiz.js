@@ -111,7 +111,7 @@
           '<div class="r-top"><span class="r-ic">' + (ICONES[r.periodo] || '') + '</span>' +
           '<div class="r-per"><b>' + esc(nomePer(r.periodo)) + '</b><span>' + horaTxt(r.abre) + ' às ' + horaTxt(r.fecha) + '</span></div>' + (SELOS[st] || '') + '</div>' +
           '<span class="r-num">Rodada ' + r.id + '</span>' +
-          '<h3>' + esc(r.tema || 'Tema a definir') + '</h3>' +
+          '
           '<div class="r-acao">' + botao + '</div></article>';
       });
       html += '</div></div>';
@@ -139,12 +139,12 @@
     if(alvo){
       if(aberta){
         alvo.className = 'hero-status glass glass-red is-live';
-        alvo.innerHTML = '<span class="hst-dot"></span><div><small>Rodada aberta agora</small><b>' + esc(textoRodada(aberta)) + '</b><span>' + esc(aberta.tema) + ' · fecha às ' + horaTxt(aberta.fecha) + '</span></div>' +
+        alvo.innerHTML = '<span class="hst-dot"></span><div><small>Rodada aberta agora</small><b>' + esc(textoRodada(aberta)) + '</b><span>' + 'Fecha às ' + horaTxt(aberta.fecha) + '</span></div>' +
           '<button class="btn btn-primary btn-sm" data-rodada="' + aberta.id + '">Responder agora</button>';
       } else if(prox){
         var c = contagem(prox.inicio.getTime() - Date.now());
         alvo.className = 'hero-status glass';
-        alvo.innerHTML = '<div class="hst-txt"><small>Próxima rodada</small><b>' + esc(textoRodada(prox)) + '</b><span>Abre às ' + horaTxt(prox.abre) + ' · ' + esc(prox.tema) + '</span></div>' +
+        alvo.innerHTML = '<div class="hst-txt"><small>Próxima rodada</small><b>' + esc(textoRodada(prox)) + '</b><span>Abre às ' + horaTxt(prox.abre) + '</span></div>' +
           '<div class="cd" aria-label="Tempo até a próxima rodada">' +
           '<div><b>' + c.d + '</b><span>dias</span></div><div><b>' + dois(c.h) + '</b><span>horas</span></div><div><b>' + dois(c.m) + '</b><span>min</span></div><div><b>' + dois(c.s) + '</b><span>seg</span></div></div>';
       } else {
@@ -177,10 +177,10 @@
     var feitas = Object.keys(respondidas()).length;
     var acao;
     if(aberta){
-      acao = '<div class="pi-box pi-live"><small>Rodada aberta agora</small><b>' + esc(textoRodada(aberta)) + '</b><span>' + esc(aberta.tema) + ' · fecha às ' + horaTxt(aberta.fecha) + '</span>' +
+      acao = '<div class="pi-box pi-live"><small>Rodada aberta agora</small><b>' + esc(textoRodada(aberta)) + '</b><span>' + 'Fecha às ' + horaTxt(aberta.fecha) + '</span>' +
         '<button class="btn btn-primary btn-block" data-rodada="' + aberta.id + '">Responder a rodada ' + aberta.id + '</button></div>';
     } else if(prox){
-      acao = '<div class="pi-box"><small>Próxima rodada</small><b>' + esc(textoRodada(prox)) + '</b><span>Abre às ' + horaTxt(prox.abre) + ' · ' + esc(prox.tema) + '</span>' +
+      acao = '<div class="pi-box"><small>Próxima rodada</small><b>' + esc(textoRodada(prox)) + '</b><span>Abre às ' + horaTxt(prox.abre) + '</span>' +
         '<a class="btn btn-glass btn-block" href="#rodadas">Ver todas as rodadas</a></div>';
     } else {
       acao = '<div class="pi-box"><small>Quiz encerrado</small><b>Obrigado por participar!</b><span>A equipe entra em contato com os vencedores pelo WhatsApp e e-mail da inscrição.</span></div>';
@@ -316,7 +316,7 @@
 
   function cabecalho(){
     var r = Q.rodada;
-    return '<div class="qz-head"><span class="qz-tag">Rodada ' + r.id + ' · ' + esc(nomePer(r.periodo)) + ' de ' + dataCurta(r.data) + '</span><h3>' + esc(r.tema) + '</h3></div>';
+    return '<div class="qz-head"><span class="qz-tag">Rodada ' + r.id + ' · ' + esc(nomePer(r.periodo)) + ' de ' + dataCurta(r.data) + '</span></div>';
   }
 
   function telaInicio(){

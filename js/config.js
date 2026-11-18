@@ -27,12 +27,6 @@ window.QUIZ_CONFIG = {
      da planilha (o site lê de lá). */
   datas: ['2026-12-07', '2026-12-08', '2026-12-09'],
 
-  /* Tema de cada rodada, na ordem (dia 1 manhã, dia 1 tarde, dia 1 noite, dia 2 manhã...) */
-  temas: [
-    'Via aérea', 'Parada cardiorrespiratória', 'Sepse e choque',
-    'Trauma', 'Síndromes coronarianas e arritmias', 'Neurologia na emergência',
-    'Anafilaxia e intoxicações', 'Distúrbios metabólicos', 'POCUS na emergência'
-  ],
 
   /* Prêmios (o primeiro é o destaque do topo da página) */
   premios: [
