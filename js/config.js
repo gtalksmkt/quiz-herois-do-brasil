@@ -1,5 +1,5 @@
 /* ==================================================================
-   QUIZ CBMed · configuração
+   QUIZ CBMEDE · configuração
    Tudo o que a equipe costuma trocar fica aqui.
    Datas e horários: sempre no horário de Brasília, no formato
    AAAA-MM-DDTHH:MM (ex.: 2026-11-26T12:00 = quinta, 26/11, meio-dia).
@@ -19,7 +19,8 @@ window.QUIZ_CONFIG = {
      "fecha" = até quando dá para responder o bloco (por enquanto, todos ficam
      abertos até pouco antes de anunciar o vencedor). */
   blocos: [
-    { id: 1, abre: '2026-11-26T12:00', fecha: '2026-11-28T11:00' },
+    /* ⚠️ Bloco 1 aberto de propósito, só para mostrar o quiz. Na hora de valer, voltar para '2026-11-26T12:00'. */
+    { id: 1, abre: '2026-11-19T00:00', fecha: '2026-11-28T11:00' },
     { id: 2, abre: '2026-11-26T18:00', fecha: '2026-11-28T11:00' },
     { id: 3, abre: '2026-11-27T08:00', fecha: '2026-11-28T11:00' },
     { id: 4, abre: '2026-11-27T12:00', fecha: '2026-11-28T11:00' },
@@ -55,10 +56,9 @@ window.QUIZ_CONFIG = {
     'Cursos de atualização em geral'
   ],
 
-  /* Prêmios (o primeiro é o destaque do topo da página) */
+  /* Prêmio: só existe o vencedor (quem acertar mais; empate = menor tempo) */
   premios: [
-    { posicao: '1º lugar', nome: 'Videolaringoscópio', texto: 'Para quem fizer mais pontos somando os 5 blocos.' },
-    { posicao: 'Outros prêmios', nome: 'A divulgar', texto: 'Novos prêmios serão anunciados em breve.' }
+    { posicao: 'Vencedor', nome: 'Videolaringoscópio', texto: 'Para quem acertar mais perguntas nos 5 blocos. Em caso de empate, vence quem respondeu mais rápido.' }
   ],
 
   /* Realizadores (aparecem no fim da página). "logo" = arquivo em img/.

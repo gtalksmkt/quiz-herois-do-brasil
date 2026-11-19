@@ -1,5 +1,5 @@
 /* ==================================================================
-   QUIZ CBMed · funcionamento da página
+   QUIZ CBMEDE · funcionamento da página
    - trilha dos 5 blocos (cadeado fechado até a hora de cada bloco abrir)
    - inscrição (obrigatória para responder) e "já fiz minha inscrição"
    - player do quiz: uma pergunta por vez, deslizando na horizontal
@@ -11,6 +11,7 @@
   var C = window.QUIZ_CONFIG || {};
   var ENDPOINT = (C.endpoint || '').trim();
   var TESTE = /[?&]teste=1\b/.test(location.search) && !ENDPOINT;
+  var PAGINA = document.body.getAttribute('data-page') || 'inicio'; // 'inicio' (inscrição) ou 'quiz'
   var LS = { inscrito: 'qcb.inscrito', respostas: 'qcb.respostas', demoInscritos: 'qcb.demo.inscritos' };
   var $ = function(s, r){ return (r || document).querySelector(s); };
   var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
@@ -186,6 +187,7 @@
 
   function renderPainel(){
     var form = $('#formInscricao'), painel = $('#painelInscrito'), entrar = $('#formEntrar'), tabs = $('#fTabs');
+    if(PAGINA === 'quiz') return renderAcesso();
     if(!form || !painel) return;
     var u = inscrito();
     if(!u){ painel.hidden = true; tabs.hidden = false; mostrarAba(aba); return; }
@@ -195,10 +197,10 @@
     var acao;
     if(pend.length){
       acao = '<div class="pi-box pi-live"><small>Bloco aberto agora</small><b>Bloco ' + pend[0].id + ' liberado</b><span>Seis perguntas de marcar</span>' +
-        '<button class="btn btn-primary btn-block" data-bloco="' + pend[0].id + '">Responder o bloco ' + pend[0].id + '</button></div>';
+        '<a class="btn btn-primary btn-block" href="quiz.html">Clique aqui para entrar no quiz</a></div>';
     } else if(prox){
       acao = '<div class="pi-box"><small>Próximo bloco</small><b>' + esc(textoBloco(prox)) + '</b><span>Volte aqui no horário: o cadeado abre sozinho.</span>' +
-        '<a class="btn btn-glass btn-block" href="#caminho">Ver o caminho do quiz</a></div>';
+        '<a class="btn btn-primary btn-block" href="quiz.html">Entrar no quiz</a></div>';
     } else {
       acao = '<div class="pi-box"><small>' + (anunciado() ? 'Quiz encerrado' : 'Todos os blocos concluídos') + '</small><b>Obrigado por participar!</b><span>O vencedor é anunciado ' + esc(diaSemana(ANUNCIO_TXT)) + ', ' + dataCurta(ANUNCIO_TXT) + ' às ' + horaTxt(ANUNCIO_TXT) + '.</span></div>';
     }
@@ -210,12 +212,41 @@
       '<button class="pi-sair" id="btnSair">Não é você? Sair deste aparelho</button>';
   }
 
+  /* página do quiz: saudação, blocos abertos agora e entrada por e-mail */
+  function renderAcesso(){
+    var ok = $('#acessoOk'), entrar = $('#formEntrar'), agora = $('#quizAgora');
+    if(!ok || !entrar) return;
+    var u = inscrito();
+    entrar.hidden = !!u; ok.hidden = !u; if(agora) agora.hidden = !u;
+    if(!u) return;
+    var primeiro = (u.nome || '').trim().split(/\s+/)[0] || '';
+    var feitas = Object.keys(respondidas()).length;
+    ok.innerHTML = '<div class="pi-head"><span class="pi-ok">' + IC.check + '</span>' +
+      '<div><small>Acesso liberado</small><h3>' + (primeiro ? 'Olá, ' + esc(primeiro) + '!' : 'Bem-vindo(a)!') + '</h3><span>' + esc(u.email) + '</span></div></div>' +
+      '<p class="pi-sub">Blocos respondidos: <b>' + feitas + ' de ' + BLOCOS.length + '</b>. Cada bloco só pode ser enviado uma vez.</p>' +
+      '<button class="pi-sair" id="btnSair">Não é você? Sair deste aparelho</button>';
+    if(agora){
+      var pend = pendentes(), prox = proximoBloco(), html;
+      if(pend.length){
+        html = '<h3 class="agora-t">Blocos liberados agora</h3><div class="agora-grid">' + pend.map(function(b){
+          return '<div class="agora-card glass glass-red"><span class="agora-ic">' + IC.aberto + '</span><div><b>Bloco ' + b.id + '</b><span>6 perguntas de marcar</span></div>' +
+            '<button class="btn btn-primary" data-bloco="' + b.id + '">Responder</button></div>';
+        }).join('') + '</div>';
+      } else if(prox){
+        html = '<div class="agora-vazio glass"><span class="agora-ic">' + IC.fechado + '</span><div><b>Nenhum bloco aberto agora</b><span>Próximo: ' + esc(textoBloco(prox)) + '</span></div></div>';
+      } else {
+        html = '<div class="agora-vazio glass"><span class="agora-ic">' + IC.trofeu + '</span><div><b>Todos os blocos foram encerrados</b><span>O vencedor é anunciado ' + esc(diaSemana(ANUNCIO_TXT)) + ', ' + dataCurta(ANUNCIO_TXT) + ' às ' + horaTxt(ANUNCIO_TXT) + '.</span></div></div>';
+      }
+      agora.innerHTML = html;
+    }
+  }
+
   function msg(el, texto, tipo){ el.textContent = texto; el.className = 'f-msg' + (tipo ? ' ' + tipo : ''); }
   var emailOk = function(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e); };
 
   function iniciarFormularios(){
     var form = $('#formInscricao'), entrar = $('#formEntrar');
-    if(!form) return;
+    if(form){
     var tel = form.elements.whatsapp;
     tel.addEventListener('input', function(){ tel.value = mascaraTel(tel.value); });
     $('#tabInscrever').addEventListener('click', function(){ mostrarAba('inscrever'); });
@@ -256,8 +287,10 @@
         msg(aviso, 'Não conseguimos enviar agora. Confira a internet e tente de novo.', 'erro');
       }).then(function(){ bt.disabled = false; bt.textContent = 'Fazer minha inscrição'; });
     });
+    }
 
     /* já tenho inscrição (outro aparelho ou página atualizada): só o e-mail */
+    if(entrar){
     entrar.addEventListener('submit', function(ev){
       ev.preventDefault();
       var email = entrar.elements.email.value.trim().toLowerCase(), aviso = $('#msgEntrar');
@@ -273,13 +306,14 @@
           msg(aviso, '');
           renderPainel(); renderTrilha(); tick();
           toast('Pronto! Encontramos a sua inscrição.');
-          var c = $('#caminho'); if(c) c.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          var c = $('#caminho'); if(c && PAGINA === 'inicio') c.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
           msg(aviso, 'Não encontramos inscrição com este e-mail. Confira ou faça a inscrição.', 'erro');
         }
       }).catch(function(){ msg(aviso, 'Não conseguimos conferir agora. Tente de novo.', 'erro'); })
         .then(function(){ bt.disabled = false; });
     });
+    }
 
     document.addEventListener('click', function(ev){
       if(ev.target && ev.target.id === 'btnSair'){
@@ -321,20 +355,14 @@
 
   function popupInscrito(nome){
     var primeiro = (nome || '').trim().split(/\s+/)[0] || '';
-    var pend = pendentes(), prox = proximoBloco(), texto, botao;
-    if(pend.length){
-      texto = 'O <b>bloco ' + pend[0].id + '</b> já está aberto. São seis perguntas de marcar.';
-      botao = '<button class="btn btn-primary btn-block" data-bloco="' + pend[0].id + '">Acessar o quiz agora</button>';
-    } else if(prox){
-      texto = 'O primeiro bloco abre <b>' + esc(diaSemana(prox.abre)) + ', ' + dataCurta(prox.abre) + ', às ' + horaTxt(prox.abre) + '</b>. Volte aqui no horário: o cadeado abre sozinho.';
-      botao = '<a class="btn btn-primary btn-block" href="#caminho" data-fechar-pop>Ver o caminho do quiz</a>';
-    } else {
-      texto = 'Os blocos do quiz já foram encerrados.';
-      botao = '<button class="btn btn-primary btn-block" data-fechar-pop>Fechar</button>';
-    }
+    var pend = pendentes(), prox = proximoBloco(), texto;
+    if(pend.length) texto = 'O <b>bloco ' + pend[0].id + '</b> já está aberto: são seis perguntas de marcar.';
+    else if(prox) texto = 'O primeiro bloco abre <b>' + esc(diaSemana(prox.abre)) + ', ' + dataCurta(prox.abre) + ', às ' + horaTxt(prox.abre) + '</b>. Volte no horário: o cadeado abre sozinho.';
+    else texto = 'Os blocos do quiz já foram encerrados.';
+    var botao = '<a class="btn btn-primary btn-block" href="quiz.html">Clique aqui para entrar no quiz</a>';
     popCorpo.innerHTML = '<div class="qz-fim"><span class="qz-fim-ic">' + IC.check + '</span>' +
-      '<h3>' + (primeiro ? esc(primeiro) + ', inscrição feita!' : 'Inscrição feita!') + '</h3>' +
-      '<p>Você já pode acessar o quiz. ' + texto + '</p>' + botao +
+      '<h3>' + (primeiro ? esc(primeiro) + ', acesso liberado!' : 'Acesso liberado!') + '</h3>' +
+      '<p>Sua inscrição foi feita e você já pode acessar o quiz. ' + texto + '</p>' + botao +
       '<p class="qz-obs">Se atualizar a página, é só usar <b>Já fiz minha inscrição</b> e digitar o seu e-mail.</p></div>';
     abrirJanela(pop);
   }
@@ -345,7 +373,9 @@
   function abrirBloco(id){
     var b = BLOCOS.filter(function(x){ return x.id === id; })[0];
     if(!b) return;
+    if(PAGINA === 'inicio' && inscrito()){ location.href = 'quiz.html?bloco=' + id; return; }
     if(!inscrito()){
+      if(PAGINA === 'quiz'){ toast('Digite o e-mail da sua inscrição para entrar.'); var ac = $('#quizAcesso'); if(ac) ac.scrollIntoView({ behavior: 'smooth' }); return; }
       toast('Faça sua inscrição para responder ao quiz.');
       $('#inscricao').scrollIntoView({ behavior: 'smooth' });
       setTimeout(function(){ var n = $('#formInscricao input[name=nome]'); if(n) n.focus({ preventScroll: true }); }, 700);
@@ -495,7 +525,7 @@
     $$('[data-c="perguntas"]').forEach(function(el){ el.textContent = BLOCOS.length * 6; });
     $$('[data-c="agenda"]').forEach(function(el){ el.textContent = agendaTexto(); });
     $$('[data-c="anuncio"]').forEach(function(el){ el.textContent = diaSemana(ANUNCIO_TXT) + ', ' + dataCurta(ANUNCIO_TXT) + ', às ' + horaTxt(ANUNCIO_TXT); });
-    $$('[data-c="whats"]').forEach(function(el){ el.href = 'https://wa.me/' + C.whatsapp + '?text=' + encodeURIComponent('Olá! Tenho uma dúvida sobre o Quiz CBMed.'); });
+    $$('[data-c="whats"]').forEach(function(el){ el.href = 'https://wa.me/' + C.whatsapp + '?text=' + encodeURIComponent('Olá! Tenho uma dúvida sobre o Quiz CBMEDE.'); });
     $$('[data-c="whatsTexto"]').forEach(function(el){ el.textContent = C.whatsappTexto; });
     var pr = $('#listaPremios');
     if(pr){
@@ -537,14 +567,23 @@
       }
       if(ev.target.closest && ev.target.closest('[data-fechar-pop]')) fecharJanela(pop);
     });
-    $('#quizFechar').addEventListener('click', function(){ fecharQuiz(false); });
-    $('#popFechar').addEventListener('click', function(){ fecharJanela(pop); });
-    modal.addEventListener('click', function(ev){ if(ev.target === modal) fecharQuiz(false); });
-    pop.addEventListener('click', function(ev){ if(ev.target === pop) fecharJanela(pop); });
+    if(modal){
+      $('#quizFechar').addEventListener('click', function(){ fecharQuiz(false); });
+      modal.addEventListener('click', function(ev){ if(ev.target === modal) fecharQuiz(false); });
+    }
+    if(pop){
+      $('#popFechar').addEventListener('click', function(){ fecharJanela(pop); });
+      pop.addEventListener('click', function(ev){ if(ev.target === pop) fecharJanela(pop); });
+    }
     document.addEventListener('keydown', function(ev){
       if(ev.key !== 'Escape') return;
-      if(!pop.hidden) fecharJanela(pop); else if(!modal.hidden) fecharQuiz(false);
+      if(pop && !pop.hidden) fecharJanela(pop); else if(modal && !modal.hidden) fecharQuiz(false);
     });
+    /* quiz.html?bloco=N abre o bloco direto (vindo da página de inscrição) */
+    if(PAGINA === 'quiz'){
+      var m = location.search.match(/[?&]bloco=(\d+)/);
+      if(m && inscrito()) abrirBloco(+m[1]);
+    }
 
     /* header, menu, FAQ, fade-in */
     var header = $('.header');

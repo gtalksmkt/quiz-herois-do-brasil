@@ -7,12 +7,12 @@
    ================================================================== */
 window.QUIZ_PERGUNTAS_DEMO = {
   1: [
-    { p: 'Na sequência rápida de intubação, qual destes medicamentos é um bloqueador neuromuscular?', o: ['Rocurônio', 'Midazolam', 'Fentanil', 'Cetamina'] },
-    { p: 'Qual dispositivo mostra a glote em uma tela, por meio de uma câmera na ponta da lâmina?', o: ['Laringoscópio convencional (Macintosh)', 'Videolaringoscópio', 'Máscara laríngea', 'Cânula de Guedel'] },
-    { p: 'Qual é o método mais confiável para confirmar a posição do tubo na traqueia?', o: ['Ausculta pulmonar', 'Embaçamento do tubo', 'Capnografia com curva', 'Expansão do tórax'] },
-    { p: 'Na RCP de adultos, qual é a frequência recomendada de compressões torácicas?', o: ['60 a 80 por minuto', '80 a 100 por minuto', '100 a 120 por minuto', '120 a 140 por minuto'] },
-    { p: 'Qual é a profundidade recomendada das compressões em adultos?', o: ['2 a 3 cm', '3 a 4 cm', '5 a 6 cm', '7 a 8 cm'] },
-    { p: 'Qual destes ritmos de parada é chocável?', o: ['Assistolia', 'Atividade elétrica sem pulso', 'Fibrilação ventricular', 'Bradicardia sinusal'] }
+    { p: 'Qual é a posição recomendada da cabeça para alinhar os eixos e facilitar a laringoscopia em adultos sem trauma de coluna?', o: ['Hiperextensão máxima do pescoço', 'Posição olfativa (cabeça elevada e leve extensão)', 'Flexão máxima do pescoço', 'Cabeça girada para o lado'] },
+    { p: 'Qual destes é um bloqueador neuromuscular despolarizante usado na sequência rápida de intubação?', o: ['Rocurônio', 'Cisatracúrio', 'Succinilcolina', 'Vecurônio'] },
+    { p: 'Qual é o método mais confiável para confirmar a posição do tubo na traqueia?', o: ['Ausculta do epigástrio', 'Embaçamento do tubo', 'Expansão do tórax', 'Capnografia com curva'] },
+    { p: 'Qual manobra, feita com pressão sobre a cartilagem tireóidea, pode ajudar a visualizar a glote durante a laringoscopia?', o: ['Manobra de Sellick', 'Manobra BURP', 'Manobra de Heimlich', 'Manobra de Valsalva'] },
+    { p: 'Antes de intubar um paciente hipoxêmico, qual é a conduta de pré-oxigenação mais adequada?', o: ['Nenhuma, intubar logo', 'Ventilar com pressão positiva forte e rápida', 'Oxigênio a 100% por pelo menos 3 minutos', 'Oxigênio por cateter nasal a 1 L/min'] },
+    { p: 'Na situação "não intubo, não oxigeno" (falha de intubação e de ventilação), qual é a conduta?', o: ['Repetir a laringoscopia indefinidamente', 'Esperar o paciente acordar', 'Aprofundar a sedação e aguardar', 'Via aérea cirúrgica de emergência (cricotireoidostomia)'] }
   ],
   2: [
     { p: 'Na sepse com hipoperfusão, qual volume inicial de cristaloide é sugerido nas primeiras 3 horas?', o: ['10 mL/kg', '30 mL/kg', '50 mL/kg', '5 mL/kg'] },

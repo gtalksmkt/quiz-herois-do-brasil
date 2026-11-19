@@ -1,5 +1,5 @@
 /* ==================================================================
-   QUIZ CBMed · planilha (Google Apps Script)
+   QUIZ CBMEDE · planilha (Google Apps Script)
 
    O que este script faz:
    - guarda as inscrições (aba "Inscritos"), com categoria profissional e interesses para 2027
@@ -8,7 +8,7 @@
    - monta o ranking (aba "Ranking", menu Quiz > Atualizar ranking)
 
    Como ligar (uma vez):
-   1. Crie uma planilha no Google Planilhas, ex.: "Quiz CBMed".
+   1. Crie uma planilha no Google Planilhas, ex.: "Quiz CBMEDE".
       Extensões > Apps Script. Apague o código e cole este arquivo inteiro. Salve.
    2. Escolha a função "configurar" e clique em Executar (autorize o acesso).
       Ela cria as abas Blocos, Perguntas, Inscritos, Respostas e Ranking.
@@ -114,7 +114,7 @@ function doGet(e){
     return json_({ ok: true, perguntas: perguntas_(b.id).map(function(q){ return { p: q.p, o: q.o }; }) });
   }
 
-  return json_({ ok: true, quiz: 'Quiz CBMed', versao: VERSAO });
+  return json_({ ok: true, quiz: 'Quiz CBMEDE', versao: VERSAO });
 }
 
 /* ---------------- envio (POST) ---------------- */

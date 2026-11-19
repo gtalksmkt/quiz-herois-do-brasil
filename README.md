@@ -1,4 +1,4 @@
-# Quiz CBMed
+# Quiz CBMEDE
 
 Landing do quiz de medicina de emergência da Emergency Talks: a pessoa se inscreve e responde a 30 perguntas, em 5 blocos de 6, para concorrer a um videolaringoscópio. O vencedor é anunciado no sábado, ao meio-dia.
 

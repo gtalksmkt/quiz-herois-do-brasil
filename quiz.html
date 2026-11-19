@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quiz CBMEDE · Responder ao quiz</title>
+<meta name="description" content="Responda aos blocos de perguntas do Quiz CBMEDE e concorra a um videolaringoscópio." />
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#040405" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23040405'/%3E%3Cpath d='M3 17h5l2-7 3 13 3-9 2 3h8' fill='none' stroke='%23F51627' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/estilo.css" />
+</head>
+<body data-page="quiz">
+<div class="teste-flag">MODO TESTE · todos os blocos liberados</div>
+<header class="header">
+  <div class="container nav">
+    <a href="index.html" class="brands" aria-label="Quiz CBMEDE: ECME, Emergency Talks e Omni"><img class="br-ecme" src="img/ecme.png" alt="ECME" /><i class="br-sep"></i><img src="img/emergency-logo.png" alt="Emergency Talks" /><i class="br-sep"></i><span class="br-word">Omni</span></a>
+    <nav class="nav-links" aria-label="Seções">
+      <a href="index.html">Início</a>
+      <a href="#caminho">O caminho</a>
+    </nav>
+    <div class="nav-cta"><a href="index.html#premios" class="btn btn-primary">Ver o prêmio</a></div>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mm-close" id="mmClose" aria-label="Fechar menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <a href="index.html">Início</a>
+  <a href="#caminho">O caminho</a>
+  <a href="index.html#premios" class="btn btn-primary">Ver o prêmio</a>
+</div>
+
+
+<main id="topo">
+<!-- ACESSO AO QUIZ -->
+<section class="quiz-top">
+  <div class="hero-fx" aria-hidden="true"><img class="hero-vl" src="img/videolaringoscopio.png" alt="" /><div class="hero-aurora"></div></div>
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow center">Quiz CBMEDE</span>
+      <h1 class="quiz-h1">Responda e concorra a um <span class="accent">videolaringoscópio</span></h1>
+      <p class="lead">São 5 blocos de 6 perguntas de marcar. Quem acertar mais leva o prêmio; se empatar, vence quem respondeu mais rápido.</p>
+    </div>
+
+    <div class="quiz-acesso glass" id="quizAcesso">
+      <!-- já inscrito neste aparelho -->
+      <div id="acessoOk" hidden></div>
+      <!-- entrar com o e-mail da inscrição -->
+      <form id="formEntrar" novalidate>
+        <h3>Entrar no quiz</h3>
+        <p class="fc-sub">Digite o e-mail da sua inscrição. Ainda não se inscreveu? <a href="index.html#inscricao" class="link-u">Faça a inscrição aqui</a>.</p>
+        <div class="f-field"><label for="fEmail2">E-mail da inscrição</label><input id="fEmail2" name="email" type="email" autocomplete="email" inputmode="email" placeholder="voce@email.com" /></div>
+        <p class="f-msg" id="msgEntrar" role="alert"></p>
+        <button type="submit" class="btn btn-primary btn-block">Entrar com meu e-mail</button>
+      </form>
+    </div>
+
+    <div class="quiz-agora" id="quizAgora" hidden></div>
+  </div>
+</section>
+
+<!-- CAMINHO DO QUIZ -->
+<section id="caminho" style="padding-top:20px">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow center">O caminho do quiz</span>
+      <h2>Do primeiro bloco ao <span class="accent">vencedor</span></h2>
+      <p class="lead">Cada bloco fica trancado até o horário dele. Quando o cadeado abre, é só tocar em <b>Responder</b>. Horários de Brasília.</p>
+    </div>
+    <div class="trilha glass" id="trilha" aria-live="polite"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <p class="foot-tag">Um quiz realizado por</p>
+    <div class="brands brands-foot"><img class="br-ecme" src="img/ecme.png" alt="ECME" /><i class="br-sep"></i><img src="img/emergency-logo.png" alt="Emergency Talks" /><i class="br-sep"></i><span class="br-word">Omni</span></div>
+    <p class="foot-copy">© ECME · Emergency Talks · Omni. Quiz CBMEDE.</p>
+  </div>
+</footer>
+
+<!-- MODAL DO QUIZ -->
+<div class="qz-modal" id="quizModal" hidden role="dialog" aria-modal="true" aria-label="Bloco do quiz">
+  <div class="qz-card glass">
+    <button class="qz-x" id="quizFechar" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div id="quizCorpo"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/config.js"></script>
+<script src="js/perguntas-demo.js"></script>
+<script src="js/quiz.js"></script>
+</body>
+</html>
