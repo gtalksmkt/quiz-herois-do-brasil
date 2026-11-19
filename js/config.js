@@ -1,6 +1,8 @@
 /* ==================================================================
-   QUIZ · ENCONTRO DOS HERÓIS DO BRASIL · configuração
+   QUIZ CBMed · configuração
    Tudo o que a equipe costuma trocar fica aqui.
+   Datas e horários: sempre no horário de Brasília, no formato
+   AAAA-MM-DDTHH:MM (ex.: 2026-11-26T12:00 = quinta, 26/11, meio-dia).
    ================================================================== */
 window.QUIZ_CONFIG = {
 
@@ -13,24 +15,57 @@ window.QUIZ_CONFIG = {
   whatsapp: '5585998302705',
   whatsappTexto: '(85) 99830-2705',
 
-  /* Horários de cada período (horário de Brasília). Cada rodada fica
-     aberta do horário "abre" até o horário "fecha". */
-  periodos: {
-    manha: { nome: 'Manhã', abre: '09:00', fecha: '12:00' },
-    tarde: { nome: 'Tarde', abre: '14:00', fecha: '18:00' },
-    noite: { nome: 'Noite', abre: '19:00', fecha: '23:00' }
-  },
+  /* Os 5 blocos de 6 perguntas (30 no total). "abre" = hora em que o cadeado se abre.
+     "fecha" = até quando dá para responder o bloco (por enquanto, todos ficam
+     abertos até pouco antes de anunciar o vencedor). */
+  blocos: [
+    { id: 1, abre: '2026-11-26T12:00', fecha: '2026-11-28T11:00' },
+    { id: 2, abre: '2026-11-26T18:00', fecha: '2026-11-28T11:00' },
+    { id: 3, abre: '2026-11-27T08:00', fecha: '2026-11-28T11:00' },
+    { id: 4, abre: '2026-11-27T12:00', fecha: '2026-11-28T11:00' },
+    { id: 5, abre: '2026-11-27T18:00', fecha: '2026-11-28T11:00' }
+  ],
 
-  /* Datas do quiz (AAAA-MM-DD). Cada data tem 3 rodadas: manhã, tarde e noite.
-     ⚠️ DATAS PROVISÓRIAS: trocar pelas datas oficiais do Encontro.
-     Com o Apps Script ligado, a agenda oficial passa a ser a aba "Rodadas"
-     da planilha (o site lê de lá). */
-  datas: ['2026-12-07', '2026-12-08', '2026-12-09'],
+  /* Anúncio do vencedor */
+  anuncio: '2026-11-28T12:00',
 
+  /* Categoria profissional (lista da inscrição) */
+  categorias: [
+    'Médico(a) emergencista',
+    'Médico(a) com outra especialidade',
+    'Médico(a) sem especialidade',
+    'Médico(a) residente',
+    'Estudante de medicina',
+    'Enfermeiro(a)',
+    'Técnico(a) de enfermagem',
+    'Outro profissional da saúde',
+    'Outro'
+  ],
+
+  /* "Em 2027, o que você quer oferecer mais para o seu paciente?" (pode marcar vários) */
+  pergunta2027: 'Em 2027, o que você quer oferecer mais para o seu paciente?',
+  interesses: [
+    'Título de especialista',
+    'Mais preparo em via aérea',
+    'Mais preparo em parada cardiorrespiratória',
+    'Mais preparo em choque e sepse',
+    'Mais preparo em trauma',
+    'Mais preparo em ultrassom à beira-leito (POCUS)',
+    'Mais segurança nos plantões',
+    'Cursos de atualização em geral'
+  ],
 
   /* Prêmios (o primeiro é o destaque do topo da página) */
   premios: [
-    { posicao: '1º lugar', nome: 'Videolaringoscópio', texto: 'Para quem fizer mais pontos somando todas as rodadas.' },
-    { posicao: 'Próximos colocados', nome: 'Outros prêmios de medicina de emergência', texto: 'Materiais e cursos para a sua prática na emergência. A lista completa será divulgada em breve.' }
+    { posicao: '1º lugar', nome: 'Videolaringoscópio', texto: 'Para quem fizer mais pontos somando os 5 blocos.' },
+    { posicao: 'Outros prêmios', nome: 'A divulgar', texto: 'Novos prêmios serão anunciados em breve.' }
+  ],
+
+  /* Realizadores (aparecem no fim da página). "logo" = arquivo em img/.
+     "texto" vazio = não mostra descrição. */
+  realizadores: [
+    { nome: 'Emergency Talks', logo: 'img/emergency-logo.png', texto: 'Escola de medicina de emergência do Grupo Talks, com cursos e preparatórios para quem atua na emergência.' },
+    { nome: 'Omni', logo: '', texto: '' },
+    { nome: 'ECME', logo: 'img/ecme.png', texto: '' }
   ]
 };

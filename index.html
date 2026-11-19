@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Quiz Encontro dos Heróis do Brasil | Concorra a um videolaringoscópio · Emergency Talks</title>
-<meta name="description" content="Além de participar do Encontro dos Heróis do Brasil, participe do quiz de medicina de emergência da Emergency Talks e concorra a um videolaringoscópio e outros prêmios. Rodadas de manhã, de tarde e à noite." />
+<title>Quiz CBMed | Concorra a um videolaringoscópio · Emergency Talks</title>
+<meta name="description" content="Participe do Quiz CBMed, o quiz de medicina de emergência da Emergency Talks, e concorra a um videolaringoscópio. 30 perguntas em 5 blocos, de quinta a sábado." />
 <meta name="robots" content="noindex" />
 <meta name="theme-color" content="#040405" />
-<meta property="og:title" content="Quiz Encontro dos Heróis do Brasil · Concorra a um videolaringoscópio" />
-<meta property="og:description" content="Inscreva-se, responda às rodadas de manhã, de tarde e à noite e concorra a um videolaringoscópio e outros prêmios de medicina de emergência." />
+<meta property="og:title" content="Quiz CBMed · Concorra a um videolaringoscópio" />
+<meta property="og:description" content="Inscreva-se, responda aos 5 blocos de perguntas e concorra a um videolaringoscópio. O vencedor é anunciado no sábado." />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23040405'/%3E%3Cpath d='M3 17h5l2-7 3 13 3-9 2 3h8' fill='none' stroke='%23F51627' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -134,7 +134,7 @@ section{position:relative;padding:clamp(72px,9vw,120px) 0;z-index:1}
 .hero-facts span{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;color:var(--white-warm);padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
 .hero-facts svg{width:16px;height:16px;color:var(--red)}
 
-/* status da rodada (topo) */
+/* status do bloco (topo) */
 .hero-status{margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 22px;border-radius:20px;max-width:600px;flex-wrap:wrap}
 .hero-status small{display:block;font-family:var(--font-head);text-transform:uppercase;letter-spacing:2px;font-size:.72rem;color:var(--red-light)}
 .hero-status b{display:block;font-family:var(--font-head);text-transform:uppercase;font-size:1.25rem;color:var(--white);letter-spacing:.4px;line-height:1.15}
@@ -186,44 +186,6 @@ section{position:relative;padding:clamp(72px,9vw,120px) 0;z-index:1}
 .step h3{font-size:1.3rem;margin-bottom:8px}
 .step p{font-size:.95rem;color:var(--gray-light)}
 
-/* períodos */
-.periods{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
-.period{display:flex;align-items:center;gap:16px;padding:20px 22px;border-radius:18px;background:var(--glass-bg);border:1px solid var(--glass-border)}
-.period .p-ic{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(245,22,39,.12);border:1px solid rgba(245,22,39,.35);flex-shrink:0}
-.period .p-ic svg{width:24px;height:24px;color:var(--red-light)}
-.period b{display:block;font-family:var(--font-head);text-transform:uppercase;font-size:1.25rem;color:var(--white);letter-spacing:.5px}
-.period span{font-size:.9rem;color:var(--gray-light)}
-
-/* ===== rodadas ===== */
-.agenda{display:flex;flex-direction:column;gap:34px}
-.dia-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;flex-wrap:wrap}
-.dia-n{font-family:var(--font-head);text-transform:uppercase;letter-spacing:2px;font-size:.8rem;color:#fff;background:linear-gradient(90deg,var(--red),var(--red-dark));padding:5px 12px;border-radius:999px}
-.dia-head b{font-family:var(--font-head);text-transform:uppercase;font-size:1.7rem;color:var(--white);letter-spacing:.5px}
-.dia-sem{font-size:.92rem;color:var(--gray-mid);text-transform:capitalize}
-.dia-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.rodada{padding:22px 22px 20px;display:flex;flex-direction:column;gap:10px;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
-.rodada:hover{transform:translateY(-4px)}
-.r-top{display:flex;align-items:center;gap:12px}
-.r-ic{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(245,22,39,.12);border:1px solid rgba(245,22,39,.32);flex-shrink:0}
-.r-ic svg{width:21px;height:21px;color:var(--red-light)}
-.r-per{flex:1;min-width:0}
-.r-per b{display:block;font-family:var(--font-head);text-transform:uppercase;font-size:1.12rem;color:var(--white);letter-spacing:.4px;line-height:1.1}
-.r-per span{font-size:.84rem;color:var(--gray-light)}
-.r-num{font-family:var(--font-head);text-transform:uppercase;letter-spacing:2px;font-size:.74rem;color:var(--gray-mid);margin-top:4px}
-.rodada h3{font-size:1.32rem;flex:1}
-.r-acao{min-height:44px;display:flex;align-items:center}
-.r-acao .btn{width:100%}
-.r-quando{font-size:.9rem;color:var(--gray-light)}
-.r-ok{color:var(--green)}
-.selo{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-head);text-transform:uppercase;letter-spacing:1px;font-size:.7rem;padding:5px 10px;border-radius:999px;white-space:nowrap}
-.selo-futura{color:var(--gray-light);border:1px solid rgba(255,255,255,.18)}
-.selo-aberta{color:#fff;background:linear-gradient(90deg,var(--red),var(--red-dark));box-shadow:0 6px 18px rgba(245,22,39,.4)}
-.selo-aberta i{width:6px;height:6px;border-radius:50%;background:#fff;animation:blink 1.2s infinite}
-.selo-encerrada{color:var(--gray-mid);border:1px solid rgba(255,255,255,.1)}
-.selo-ok{color:var(--green);border:1px solid rgba(59,214,122,.4);background:rgba(59,214,122,.08)}
-.st-aberta{border-color:rgba(245,22,39,.6);box-shadow:var(--glass-shadow),0 0 40px rgba(245,22,39,.2)}
-.st-encerrada{opacity:.55}
-.st-respondida{border-color:rgba(59,214,122,.3)}
 .ag-nota{margin-top:26px;font-size:.92rem;color:var(--gray-mid);text-align:center}
 
 /* ===== inscrição ===== */
@@ -351,6 +313,62 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(245,22,39,.18);padd
 .fade-in{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .fade-in.visible{opacity:1;transform:none}
 
+/* ===== abas e campos do formulário ===== */
+.f-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;border-radius:16px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.12);margin-bottom:22px}
+.f-tabs[hidden]{display:none}
+.f-tabs button{padding:11px 8px;border-radius:12px;font-family:var(--font-head);text-transform:uppercase;letter-spacing:.6px;font-size:1rem;font-weight:600;color:var(--gray-light);transition:color .25s,background .25s,box-shadow .25s}
+.f-tabs button.on{color:#fff;background:linear-gradient(180deg,var(--red),var(--red-dark));box-shadow:0 6px 18px rgba(245,22,39,.35)}
+.f-set{border:0;padding:0;margin:0 0 16px;min-width:0}
+.f-set legend{font-size:.85rem;font-weight:600;color:var(--white-warm);padding:0;margin-bottom:2px}
+.f-hint{display:block;font-size:.8rem;color:var(--gray-mid);margin-bottom:10px}
+.f-chips{display:flex;flex-wrap:wrap;gap:8px}
+.f-chip{position:relative;cursor:pointer}
+.f-chip input{position:absolute;opacity:0;pointer-events:none}
+.f-chip span{display:block;padding:9px 13px;border-radius:999px;font-size:.84rem;line-height:1.25;color:var(--gray-light);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.16);transition:border-color .2s,background .2s,color .2s}
+.f-chip:hover span{border-color:rgba(245,22,39,.5)}
+.f-chip input:checked+span{color:#fff;border-color:var(--red);background:linear-gradient(135deg,rgba(245,22,39,.3),rgba(245,22,39,.08))}
+.f-chip input:focus-visible+span{box-shadow:0 0 0 3px rgba(245,22,39,.3)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* ===== trilha: o caminho até o vencedor ===== */
+.trilha{--pad:clamp(14px,3vw,34px);position:relative;padding:34px var(--pad) 30px;border-radius:28px}
+.tl-line{position:absolute;top:59px;left:calc(var(--pad) + (100% - 2 * var(--pad)) / 12);right:calc(var(--pad) + (100% - 2 * var(--pad)) / 12);height:4px;border-radius:4px;background:rgba(255,255,255,.1)}
+.tl-line i{display:block;height:100%;width:var(--p,0%);border-radius:4px;background:linear-gradient(90deg,var(--red-dark),var(--red-light));box-shadow:0 0 14px rgba(245,22,39,.7);transition:width 1s linear,height 1s linear}
+.tl-nodes{position:relative;z-index:1;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:0;padding:0;list-style:none}
+.tl-node{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;min-width:0}
+.tl-ic{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#121216;border:2px solid rgba(255,255,255,.2);color:var(--gray-mid);transition:all .4s var(--ease)}
+.tl-ic svg{width:24px;height:24px}
+.tl-t{font-family:var(--font-head);text-transform:uppercase;font-size:1.2rem;letter-spacing:.5px;color:var(--white);line-height:1;margin-top:4px}
+.tl-h{display:block}
+.tl-when{font-size:.82rem;line-height:1.35;color:var(--gray-light)}
+.tl-sub{font-size:.78rem;color:var(--gray-mid)}
+.tl-next{color:var(--gold)}
+.tl-next b{font-variant-numeric:tabular-nums;color:var(--white)}
+.tl-ok{color:var(--green)}
+.tl-node .btn{margin-top:2px}
+.tl-node.st-aberta .tl-ic{color:#fff;border-color:var(--red);background:linear-gradient(180deg,var(--red),var(--red-dark));box-shadow:0 0 0 6px rgba(245,22,39,.16),0 0 28px rgba(245,22,39,.6);animation:tlpulse 2s ease-in-out infinite}
+.tl-node.st-respondida .tl-ic{color:var(--green);border-color:rgba(59,214,122,.65);background:rgba(59,214,122,.12)}
+.tl-node.st-encerrada .tl-ic{opacity:.55}
+.tl-final.st-futura .tl-ic{color:var(--gold);border-color:rgba(232,201,160,.55)}
+@keyframes tlpulse{0%,100%{box-shadow:0 0 0 6px rgba(245,22,39,.16),0 0 24px rgba(245,22,39,.5)}50%{box-shadow:0 0 0 11px rgba(245,22,39,.06),0 0 36px rgba(245,22,39,.75)}}
+
+/* ===== realizadores ===== */
+.rz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:980px;margin:0 auto}
+.rz-card{padding:28px 24px;border-radius:22px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+.rz-logo{height:84px;width:100%;display:flex;align-items:center;justify-content:center}
+.rz-logo img{max-height:84px;max-width:100%;width:auto;height:auto;object-fit:contain}
+.rz-word{font-family:var(--font-head);font-size:2.6rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--white)}
+.rz-card h3{font-size:1.25rem}
+.rz-card p{font-size:.93rem;color:var(--gray-light)}
+
+/* ===== quiz: perguntas que deslizam na horizontal ===== */
+.qz-view{overflow:hidden;touch-action:pan-y}
+.qz-track{display:flex;transition:transform .45s var(--ease)}
+.qz-slide{flex:0 0 100%;min-width:0;padding:2px}
+.qz-nav{display:grid;grid-template-columns:1fr 1.6fr;gap:12px;margin-top:6px}
+.qz-h{font-size:1.9rem;margin-bottom:10px}
+.qz-card-sm{max-width:480px}
+
 /* ===== responsivo ===== */
 @media (max-width:1024px){
   .nav-links{display:none}
@@ -364,7 +382,18 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(245,22,39,.18);padd
 }
 @media (max-width:760px){
   .nav-cta{display:none}
-  .periods,.dia-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .trilha{--pad:18px;padding:26px 18px 24px}
+  .tl-nodes{grid-template-columns:1fr;gap:0}
+  .tl-node{display:grid;grid-template-columns:54px 1fr;column-gap:16px;row-gap:2px;align-content:center;align-items:center;justify-items:start;text-align:left;min-height:92px}
+  .tl-ic{grid-row:1 / span 3;align-self:center}
+  .tl-h{display:inline}
+  .tl-h::before{content:" · "}
+  .tl-line{top:72px;bottom:70px;left:calc(var(--pad) + 25px);right:auto;width:4px;height:auto}
+  .tl-line i{width:100%;height:var(--p,0%)}
+  .rz-grid{grid-template-columns:1fr}
+  #quizModal{padding:0}
+  #quizModal .qz-card{max-width:none;height:100svh;max-height:100svh;border-radius:0;display:flex;flex-direction:column;justify-content:center;padding-top:64px}
   .steps{grid-template-columns:1fr}
   .f-row{grid-template-columns:1fr;gap:0}
   .pz-main{grid-template-columns:1fr;text-align:center}
@@ -389,7 +418,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(245,22,39,.18);padd
 </style>
 </head>
 <body>
-<div class="teste-flag">MODO TESTE · todas as rodadas liberadas</div>
+<div class="teste-flag">MODO TESTE · todos os blocos liberados</div>
 
 <!-- fundo animado -->
 <div class="bg-fx" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="bg-grain"></div></div>
@@ -434,7 +463,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(245,22,39,.18);padd
     <a href="#topo" class="logo" aria-label="Emergency Talks"><img src="img/emergency-logo.png" alt="Emergency Talks" width="93" height="34" /></a>
     <nav class="nav-links" aria-label="Seções">
       <a href="#como-funciona">Como funciona</a>
-      <a href="#rodadas">Rodadas</a>
+      <a href="#caminho">O caminho</a>
       <a href="#premios">Prêmios</a>
       <a href="#regulamento">Regulamento</a>
     </nav>
@@ -445,7 +474,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(245,22,39,.18);padd
 <div class="mobile-menu" id="mobileMenu">
   <button class="mm-close" id="mmClose" aria-label="Fechar menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <a href="#como-funciona">Como funciona</a>
-  <a href="#rodadas">Rodadas</a>
+  <a href="#caminho">O caminho</a>
   <a href="#premios">Prêmios</a>
   <a href="#regulamento">Regulamento</a>
   <a href="#inscricao" class="btn btn-primary">Fazer minha inscrição</a>
@@ -460,65 +489,59 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(245,22,39,.18);padd
   </div>
   <div class="container hero-grid">
     <div class="hero-copy">
-      <span class="hero-kicker"><i></i>Encontro dos Heróis do Brasil · Quiz Emergency Talks</span>
-      <p class="hero-pre">Além de participar do <b>Encontro dos Heróis do Brasil</b>,</p>
+      <span class="hero-kicker"><i></i>Quiz CBMed · Emergency Talks</span>
+      <p class="hero-pre">Além de participar do <b>CBMed</b>,</p>
       <h1>participe do quiz e concorra a um <span class="accent">videolaringoscópio</span></h1>
-      <p class="hero-sub">Faça sua inscrição e responda às perguntas de medicina de emergência. São <b><span data-c="rodadas">9</span> rodadas</b>: uma de manhã, uma de tarde e uma à noite, nos dias <b data-c="datas">—</b>. Quem fizer mais pontos ganha o videolaringoscópio e outros prêmios.</p>
+      <p class="hero-sub">Faça sua inscrição e responda às perguntas de medicina de emergência. São <b><span data-c="perguntas">30</span> perguntas</b> em <b><span data-c="blocos">5</span> blocos de 6</b>, liberados de quinta a sexta. Quem fizer mais pontos ganha o videolaringoscópio, e o vencedor é anunciado no sábado, ao meio-dia.</p>
       <div class="hero-cta">
         <a href="#inscricao" class="btn btn-primary btn-lg">Fazer minha inscrição
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="#rodadas" class="btn btn-glass btn-lg">Ver datas e horários</a>
+        <a href="#caminho" class="btn btn-glass btn-lg">Ver o caminho do quiz</a>
       </div>
       <div class="hero-facts">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Inscrição gratuita</span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Responde pelo celular</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>3 rodadas por dia</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>5 blocos de 6 perguntas</span>
       </div>
       <div class="hero-status glass" id="heroStatus" aria-live="polite"></div>
     </div>
 
     <div id="inscricao" class="hero-form">
     <div class="form-card glass">
+      <div class="f-tabs" id="fTabs" role="tablist">
+        <button type="button" class="on" id="tabInscrever" role="tab" aria-selected="true">Quero me inscrever</button>
+        <button type="button" id="tabEntrar" role="tab" aria-selected="false">Já fiz minha inscrição</button>
+      </div>
+
       <!-- formulário de inscrição -->
       <form id="formInscricao" novalidate>
-        <h3>Fazer inscrição</h3>
-        <p class="fc-sub">Gratuita e leva menos de 1 minuto. Use o mesmo e-mail em todas as rodadas.</p>
+        <h3>Inscrição gratuita</h3>
+        <p class="fc-sub">Leva menos de 1 minuto. Depois de enviar, o quiz já fica liberado para você.</p>
         <div class="f-field"><label for="fNome">Nome completo</label><input id="fNome" name="nome" type="text" autocomplete="name" placeholder="Seu nome e sobrenome" required /></div>
         <div class="f-row">
           <div class="f-field"><label for="fEmail">E-mail</label><input id="fEmail" name="email" type="email" autocomplete="email" inputmode="email" placeholder="voce@email.com" required /></div>
           <div class="f-field"><label for="fWhats">WhatsApp com DDD</label><input id="fWhats" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" placeholder="(85) 99999-9999" required /></div>
         </div>
-        <div class="f-row">
-          <div class="f-field"><label for="fPerfil">Você é</label>
-            <select id="fPerfil" name="perfil" required>
-              <option value="">Escolha uma opção</option>
-              <option>Médico(a) emergencista</option>
-              <option>Médico(a) de outra especialidade</option>
-              <option>Médico(a) residente</option>
-              <option>Estudante de medicina</option>
-              <option>Outro profissional de saúde</option>
-            </select></div>
-          <div class="f-field"><label for="fUf">Estado</label>
-            <select id="fUf" name="uf" required>
-              <option value="">Escolha</option>
-              <option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option>MG</option><option>PA</option><option>PB</option><option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SP</option><option>SE</option><option>TO</option>
-            </select></div>
-        </div>
+        <div class="f-field"><label for="fCategoria">Categoria profissional</label>
+          <select id="fCategoria" name="categoria" required><option value="">Escolha uma opção</option></select></div>
+        <fieldset class="f-set">
+          <legend id="fPergunta2027">Em 2027, o que você quer oferecer mais para o seu paciente?</legend>
+          <span class="f-hint">Pode marcar mais de uma opção.</span>
+          <div class="f-chips" id="fInteresses"></div>
+        </fieldset>
         <label class="f-check"><input type="checkbox" name="regulamento" />Li e aceito o <a href="#regulamento">regulamento do quiz</a>.</label>
         <label class="f-check"><input type="checkbox" name="aceite" checked />Aceito receber mensagens da Emergency Talks por WhatsApp e e-mail sobre o quiz e os cursos.</label>
         <p class="f-msg" id="msgInscricao" role="alert"></p>
         <button type="submit" class="btn btn-primary btn-block">Fazer minha inscrição</button>
-        <p class="f-alt">Já se inscreveu? <a href="#" id="linkEntrar">Já fiz minha inscrição</a></p>
       </form>
 
-      <!-- entrar com inscrição existente -->
+      <!-- já tenho inscrição: só o e-mail -->
       <form id="formEntrar" novalidate hidden>
         <h3>Já fiz minha inscrição</h3>
-        <p class="fc-sub">Digite o e-mail que você usou na inscrição.</p>
+        <p class="fc-sub">Digite o e-mail da inscrição e o quiz abre na hora. Não precisa preencher tudo de novo.</p>
         <div class="f-field"><label for="fEmail2">E-mail da inscrição</label><input id="fEmail2" name="email" type="email" autocomplete="email" inputmode="email" placeholder="voce@email.com" /></div>
         <p class="f-msg" id="msgEntrar" role="alert"></p>
         <button type="submit" class="btn btn-primary btn-block">Entrar com meu e-mail</button>
-        <p class="f-alt">Ainda não se inscreveu? <a href="#" id="linkVoltar">Fazer inscrição</a></p>
       </form>
 
       <!-- inscrito -->
@@ -530,10 +553,25 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(245,22,39,.18);padd
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Quiz de medicina de emergência</span><span>Concorra a um videolaringoscópio</span><span>Rodadas de manhã, tarde e noite</span><span>Encontro dos Heróis do Brasil</span><span>Inscrição gratuita</span>
-    <span>Quiz de medicina de emergência</span><span>Concorra a um videolaringoscópio</span><span>Rodadas de manhã, tarde e noite</span><span>Encontro dos Heróis do Brasil</span><span>Inscrição gratuita</span>
+    <span>Quiz de medicina de emergência</span><span>Concorra a um videolaringoscópio</span><span>5 blocos de 6 perguntas</span><span>Quiz CBMed</span><span>Inscrição gratuita</span>
+    <span>Quiz de medicina de emergência</span><span>Concorra a um videolaringoscópio</span><span>5 blocos de 6 perguntas</span><span>Quiz CBMed</span><span>Inscrição gratuita</span>
   </div>
 </div>
+
+<!-- CAMINHO DO QUIZ -->
+<section id="caminho">
+  <div class="container">
+    <div class="section-head center fade-in">
+      <span class="eyebrow center">O caminho do quiz</span>
+      <h2>Do primeiro bloco ao <span class="accent">vencedor</span></h2>
+      <p class="lead">São 5 blocos de 6 perguntas. Cada bloco fica trancado até o horário dele: quando o cadeado abre, é só tocar em <b>Responder</b>. Horários de Brasília.</p>
+    </div>
+    <div class="trilha glass fade-in" id="trilha" aria-live="polite"></div>
+    <p class="ag-nota">Você pode responder cada bloco uma vez. Quanto mais blocos responder, mais pontos pode somar.</p>
+  </div>
+</section>
+
+<hr class="divider" />
 
 <!-- COMO FUNCIONA -->
 <section id="como-funciona">
@@ -541,46 +579,26 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(245,22,39,.18);padd
     <div class="section-head center fade-in">
       <span class="eyebrow center">Como funciona</span>
       <h2>Quatro passos para <span class="accent">concorrer</span></h2>
-      <p class="lead">Você se inscreve uma vez só. Depois, é só voltar a esta página no horário de cada rodada e responder às perguntas.</p>
+      <p class="lead">Você se inscreve uma vez só. Depois, é só voltar a esta página quando cada bloco abrir e responder pelo celular ou pelo computador.</p>
     </div>
     <div class="steps">
       <div class="step glass fade-in">
         <span class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></span>
-        <div class="s-n">01</div><h3>Faça a inscrição</h3><p>Preencha nome, e-mail e WhatsApp. Sem inscrição não é possível responder.</p>
+        <div class="s-n">01</div><h3>Faça a inscrição</h3><p>Preencha o formulário no topo da página. Sem inscrição não é possível responder.</p>
       </div>
       <div class="step glass fade-in">
-        <span class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
-        <div class="s-n">02</div><h3>Espere a rodada abrir</h3><p>Cada dia tem 3 rodadas: manhã, tarde e noite. Cada uma fica aberta só por algumas horas.</p>
+        <span class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/></svg></span>
+        <div class="s-n">02</div><h3>Espere o cadeado abrir</h3><p>Os blocos abrem na quinta e na sexta: <span data-c="agenda"></span>.</p>
       </div>
       <div class="step glass fade-in">
         <span class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg></span>
-        <div class="s-n">03</div><h3>Responda às perguntas</h3><p>Perguntas de múltipla escolha sobre medicina de emergência. Uma pergunta por vez.</p>
+        <div class="s-n">03</div><h3>Responda às perguntas</h3><p>Seis perguntas de marcar por bloco, uma de cada vez, passando de lado como no celular.</p>
       </div>
       <div class="step glass fade-in">
         <span class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/></svg></span>
-        <div class="s-n">04</div><h3>Some pontos e concorra</h3><p>Cada acerto vale 1 ponto. Quem somar mais pontos em todas as rodadas ganha.</p>
+        <div class="s-n">04</div><h3>Some pontos e concorra</h3><p>Cada acerto vale 1 ponto. O vencedor é anunciado <span data-c="anuncio"></span>.</p>
       </div>
     </div>
-    <div class="periods">
-      <div class="period fade-in"><span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></span><div><b>Manhã</b><span>Rodada aberta das 9h às 12h</span></div></div>
-      <div class="period fade-in"><span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 18a5 5 0 0 0-10 0"/><path d="M12 3v6M4.2 10.2l1.4 1.4M1 18h2M21 18h2M18.4 11.6l1.4-1.4M23 22H1M8 6l4 4 4-4"/></svg></span><div><b>Tarde</b><span>Rodada aberta das 14h às 18h</span></div></div>
-      <div class="period fade-in"><span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span><div><b>Noite</b><span>Rodada aberta das 19h às 23h</span></div></div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- RODADAS -->
-<section id="rodadas">
-  <div class="container">
-    <div class="section-head center fade-in">
-      <span class="eyebrow center">Datas e horários</span>
-      <h2>As <span class="accent">rodadas</span> do quiz</h2>
-      <p class="lead">Cada rodada só pode ser respondida no horário dela. Horários de Brasília.</p>
-    </div>
-    <div class="agenda" id="agenda"></div>
-    <p class="ag-nota">Quando uma rodada abrir, o botão <b>Responder agora</b> aparece aqui e no topo da página.</p>
   </div>
 </section>
 
@@ -592,7 +610,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(245,22,39,.18);padd
     <div class="section-head center fade-in">
       <span class="eyebrow center">Prêmios</span>
       <h2>O que você pode <span class="accent">ganhar</span></h2>
-      <p class="lead">Os prêmios vão para quem somar mais pontos no total das rodadas.</p>
+      <p class="lead">Os prêmios vão para quem somar mais pontos nos 5 blocos.</p>
     </div>
     <div class="pz-grid">
       <div class="pz-main glass fade-in">
@@ -618,13 +636,14 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(245,22,39,.18);padd
       <h2>Regras e <span class="accent">dúvidas</span></h2>
     </div>
     <div class="faq-list">
-      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Quem pode participar?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Médicos, residentes, estudantes de medicina e outros profissionais de saúde que fizerem a inscrição nesta página. A inscrição é gratuita.</p></div></div></div>
-      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Quando as rodadas abrem?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>São <span data-c="dias">3</span> dias de quiz (<span data-c="datas"></span>), com 3 rodadas por dia: <span data-c="periodos"></span>, no horário de Brasília. Fora desse horário a rodada não pode ser respondida.</p></div></div></div>
-      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Como é feita a pontuação?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Cada resposta certa vale 1 ponto. Somamos os pontos de todas as rodadas que você responder. Em caso de empate, fica na frente quem gastou menos tempo, somando o tempo entre abrir e enviar cada rodada.</p></div></div></div>
-      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Posso responder mais de uma vez?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Não. Cada pessoa envia cada rodada uma vez só. Vale o primeiro envio. Inscrições repetidas com o mesmo e-mail contam como uma só.</p></div></div></div>
-      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Perdi uma rodada. Ainda posso ganhar?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Pode. A rodada que você perdeu não soma pontos, mas você continua participando das próximas. Quanto mais rodadas você responder, mais chances tem.</p></div></div></div>
-      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Vejo na hora se acertei?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Não. Para ser justo com todos, o gabarito não aparece durante o quiz. A pontuação é calculada pela equipe Emergency Talks depois da última rodada.</p></div></div></div>
-      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Como vou saber se ganhei?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>A equipe entra em contato com os vencedores pelo WhatsApp e pelo e-mail informados na inscrição. Por isso, confira se os dados estão certos.</p></div></div></div>
+      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Quem pode participar?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Médicos, residentes, estudantes de medicina, enfermeiros, técnicos de enfermagem e outros profissionais da saúde que fizerem a inscrição nesta página. A inscrição é gratuita.</p></div></div></div>
+      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Quando os blocos abrem?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>São 5 blocos de 6 perguntas (30 no total), no horário de Brasília: <span data-c="agenda"></span>. Cada bloco fica trancado com um cadeado até o horário dele.</p></div></div></div>
+      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Quando sai o resultado?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>O vencedor é anunciado <span data-c="anuncio"></span>. A equipe também entra em contato pelo WhatsApp e pelo e-mail informados na inscrição. Por isso, confira se os dados estão certos.</p></div></div></div>
+      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Como é feita a pontuação?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Cada resposta certa vale 1 ponto. Somamos os pontos de todos os blocos que você responder. Em caso de empate, fica na frente quem gastou menos tempo, somando o tempo entre abrir e enviar cada bloco.</p></div></div></div>
+      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Posso responder mais de uma vez?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Não. Cada pessoa envia cada bloco uma vez só. Vale o primeiro envio. Inscrições repetidas com o mesmo e-mail contam como uma só.</p></div></div></div>
+      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Perdi um bloco. Ainda posso ganhar?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Pode. O bloco que você perdeu não soma pontos, mas você continua participando dos próximos. Quanto mais blocos você responder, mais chances tem.</p></div></div></div>
+      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Atualizei a página. Preciso me inscrever de novo?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Não. Clique em <b>Já fiz minha inscrição</b>, no topo da página, e digite o seu e-mail. O quiz abre na hora.</p></div></div></div>
+      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Vejo na hora se acertei?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Não. Para ser justo com todos, o gabarito não aparece durante o quiz. A pontuação é calculada pela equipe Emergency Talks depois do último bloco.</p></div></div></div>
       <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Ainda tenho dúvidas. Com quem falo?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Fale com a equipe pelo WhatsApp <a data-c="whats" href="https://wa.me/5585998302705" target="_blank" rel="noopener" style="color:var(--red-light);text-decoration:underline"><span data-c="whatsTexto">(85) 99830-2705</span></a>.</p></div></div></div>
     </div>
   </div>
@@ -634,9 +653,9 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(245,22,39,.18);padd
 <section style="padding-top:20px">
   <div class="container">
     <div class="cta-box glass fade-in">
-      <span class="eyebrow center" style="margin-bottom:18px">Encontro dos Heróis do Brasil</span>
+      <span class="eyebrow center" style="margin-bottom:18px">Quiz CBMed</span>
       <h2>Garanta sua vaga no <span class="accent">quiz</span></h2>
-      <p class="lead">Inscreva-se agora e responda às rodadas de manhã, de tarde e à noite para concorrer ao videolaringoscópio.</p>
+      <p class="lead">Inscreva-se agora e responda aos 5 blocos de perguntas, de quinta a sexta, para concorrer ao videolaringoscópio.</p>
       <div class="hero-cta">
         <a href="#inscricao" class="btn btn-primary btn-lg">Fazer minha inscrição</a>
         <a data-c="whats" href="https://wa.me/5585998302705" target="_blank" rel="noopener" class="btn btn-glass btn-lg">Tirar dúvidas no WhatsApp</a>
@@ -645,6 +664,16 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(245,22,39,.18);padd
   </div>
 </section>
 </main>
+<!-- REALIZADORES -->
+<section id="realizadores" style="padding-top:30px">
+  <div class="container">
+    <div class="section-head center fade-in">
+      <span class="eyebrow center">Realizadores</span>
+      <h2>Quem faz o quiz <span class="accent">acontecer</span></h2>
+    </div>
+    <div class="rz-grid" id="realizadoresLista"></div>
+  </div>
+</section>
 
 <footer>
   <div class="container">
@@ -656,12 +685,19 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(245,22,39,.18);padd
         <a href="https://www.instagram.com/emergencytalks/" target="_blank" rel="noopener">@emergencytalks</a>
       </div>
     </div>
-    <p class="foot-copy">© Emergency Talks · Grupo Talks. Quiz do Encontro dos Heróis do Brasil.</p>
+    <p class="foot-copy">© Emergency Talks · Grupo Talks. Quiz CBMed.</p>
   </div>
 </footer>
 
+<!-- POPUP DA INSCRIÇÃO -->
+<div class="qz-modal" id="popModal" hidden role="dialog" aria-modal="true" aria-label="Inscrição confirmada">
+  <div class="qz-card qz-card-sm glass">
+    <button class="qz-x" id="popFechar" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div id="popCorpo"></div>
+  </div>
+</div>
 <!-- MODAL DO QUIZ -->
-<div class="qz-modal" id="quizModal" hidden role="dialog" aria-modal="true" aria-label="Rodada do quiz">
+<div class="qz-modal" id="quizModal" hidden role="dialog" aria-modal="true" aria-label="Bloco do quiz">
   <div class="qz-card glass">
     <button class="qz-x" id="quizFechar" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <div id="quizCorpo"></div>
