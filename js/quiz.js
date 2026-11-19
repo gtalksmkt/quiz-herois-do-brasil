@@ -156,7 +156,7 @@
         void c2;
       } else {
         alvo.className = 'hero-status glass';
-        alvo.innerHTML = '<div class="hst-txt"><small>Resultado</small><b>O vencedor foi anunciado</b><span>A equipe Emergency Talks divulga nos canais oficiais.</span></div>';
+        alvo.innerHTML = '<div class="hst-txt"><small>Resultado</small><b>O vencedor foi anunciado</b><span>As empresas realizadoras divulgam nos canais oficiais.</span></div>';
       }
     }
     atualizarTrilha();
@@ -502,7 +502,7 @@
       '<div class="qz-fim' + (erro ? ' erro' : '') + '"><span class="qz-fim-ic">' + (erro ?
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16.5v.5"/></svg>' : IC.check) + '</span>' +
       '<h3>' + esc(titulo) + '</h3>' + (texto ? '<p>' + texto + '</p>' : '') +
-      (!erro ? '<p class="qz-obs">O resultado não aparece aqui: a pontuação é calculada pela equipe ao fim do quiz.</p>' : '') +
+      (!erro ? '<p class="qz-obs">O resultado não aparece aqui: a pontuação é calculada pelas equipes das empresas realizadoras ao fim do quiz.</p>' : '') +
       (podeRepetir ? '<button class="btn btn-primary btn-block" id="qzRepetir">Tentar enviar de novo</button>' : '') +
       '<button class="btn btn-glass btn-block" id="qzFechar">Fechar</button></div>';
     $('#qzFechar').addEventListener('click', function(){ fecharQuiz(true); });
