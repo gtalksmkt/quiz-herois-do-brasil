@@ -167,6 +167,9 @@
 
   /* ---------- inscrição ---------- */
   function inscrito(){ return lsGet(LS.inscrito, null); }
+  /* versão demonstrativa (config.demonstracao): dá para ver e responder o quiz sem se inscrever */
+  var DEMO = !!C.demonstracao;
+  function pessoa(){ return inscrito() || (DEMO ? { nome: 'Visitante', email: 'visitante@demonstracao' } : null); }
   function soDigitos(s){ return String(s || '').replace(/\D/g, ''); }
   function mascaraTel(v){
     var d = soDigitos(v).slice(0, 11);
@@ -197,10 +200,10 @@
     var acao;
     if(pend.length){
       acao = '<div class="pi-box pi-live"><small>Bloco aberto agora</small><b>Bloco ' + pend[0].id + ' liberado</b><span>Seis perguntas de marcar</span>' +
-        '<a class="btn btn-primary btn-block" href="quiz.html">Clique aqui para entrar no quiz</a></div>';
+        '<a class="btn btn-primary btn-block" href="quiz.html?bloco=' + pend[0].id + '">Acessar o quiz</a></div>';
     } else if(prox){
       acao = '<div class="pi-box"><small>Próximo bloco</small><b>' + esc(textoBloco(prox)) + '</b><span>Volte aqui no horário: o cadeado abre sozinho.</span>' +
-        '<a class="btn btn-primary btn-block" href="quiz.html">Entrar no quiz</a></div>';
+        '<a class="btn btn-primary btn-block" href="quiz.html">Acessar o quiz</a></div>';
     } else {
       acao = '<div class="pi-box"><small>' + (anunciado() ? 'Quiz encerrado' : 'Todos os blocos concluídos') + '</small><b>Obrigado por participar!</b><span>O vencedor é anunciado ' + esc(diaSemana(ANUNCIO_TXT)) + ', ' + dataCurta(ANUNCIO_TXT) + ' às ' + horaTxt(ANUNCIO_TXT) + '.</span></div>';
     }
@@ -217,14 +220,16 @@
     var ok = $('#acessoOk'), entrar = $('#formEntrar'), agora = $('#quizAgora');
     if(!ok || !entrar) return;
     var u = inscrito();
-    entrar.hidden = !!u; ok.hidden = !u; if(agora) agora.hidden = !u;
-    if(!u) return;
+    entrar.hidden = !!u; ok.hidden = !u; if(agora) agora.hidden = !(u || DEMO);
+    if(!u && !DEMO) return;
+    if(u){
     var primeiro = (u.nome || '').trim().split(/\s+/)[0] || '';
     var feitas = Object.keys(respondidas()).length;
     ok.innerHTML = '<div class="pi-head"><span class="pi-ok">' + IC.check + '</span>' +
       '<div><small>Acesso liberado</small><h3>' + (primeiro ? 'Olá, ' + esc(primeiro) + '!' : 'Bem-vindo(a)!') + '</h3><span>' + esc(u.email) + '</span></div></div>' +
       '<p class="pi-sub">Blocos respondidos: <b>' + feitas + ' de ' + BLOCOS.length + '</b>. Cada bloco só pode ser enviado uma vez.</p>' +
       '<button class="pi-sair" id="btnSair">Não é você? Sair deste aparelho</button>';
+    }
     if(agora){
       var pend = pendentes(), prox = proximoBloco(), html;
       if(pend.length){
@@ -359,7 +364,7 @@
     if(pend.length) texto = 'O <b>bloco ' + pend[0].id + '</b> já está aberto: são seis perguntas de marcar.';
     else if(prox) texto = 'O primeiro bloco abre <b>' + esc(diaSemana(prox.abre)) + ', ' + dataCurta(prox.abre) + ', às ' + horaTxt(prox.abre) + '</b>. Volte no horário: o cadeado abre sozinho.';
     else texto = 'Os blocos do quiz já foram encerrados.';
-    var botao = '<a class="btn btn-primary btn-block" href="quiz.html">Clique aqui para entrar no quiz</a>';
+    var botao = '<a class="btn btn-primary btn-block" href="quiz.html' + (pend.length ? '?bloco=' + pend[0].id : '') + '">Acessar o quiz</a>';
     popCorpo.innerHTML = '<div class="qz-fim"><span class="qz-fim-ic">' + IC.check + '</span>' +
       '<h3>' + (primeiro ? esc(primeiro) + ', acesso liberado!' : 'Acesso liberado!') + '</h3>' +
       '<p>Sua inscrição foi feita e você já pode acessar o quiz. ' + texto + '</p>' + botao +
@@ -373,8 +378,8 @@
   function abrirBloco(id){
     var b = BLOCOS.filter(function(x){ return x.id === id; })[0];
     if(!b) return;
-    if(PAGINA === 'inicio' && inscrito()){ location.href = 'quiz.html?bloco=' + id; return; }
-    if(!inscrito()){
+    if(PAGINA === 'inicio' && pessoa()){ location.href = 'quiz.html?bloco=' + id; return; }
+    if(!pessoa()){
       if(PAGINA === 'quiz'){ toast('Digite o e-mail da sua inscrição para entrar.'); var ac = $('#quizAcesso'); if(ac) ac.scrollIntoView({ behavior: 'smooth' }); return; }
       toast('Faça sua inscrição para responder ao quiz.');
       $('#inscricao').scrollIntoView({ behavior: 'smooth' });
@@ -386,7 +391,7 @@
     Q = { bloco: b, perguntas: [], i: 0, resp: [], inicio: Date.now(), comecou: false, enviado: false };
     abrirJanela(modal);
     corpo.innerHTML = '<div class="qz-load"><span class="spin"></span>Carregando as perguntas do bloco ' + b.id + '...</div>';
-    var carrega = ENDPOINT ? apiGet({ acao: 'bloco', id: b.id, email: inscrito().email }) :
+    var carrega = ENDPOINT ? apiGet({ acao: 'bloco', id: b.id, email: pessoa().email }) :
       Promise.resolve({ ok: true, perguntas: (window.QUIZ_PERGUNTAS_DEMO || {})[b.id] || [] });
     carrega.then(function(res){
       if(!res || !res.ok){
@@ -412,9 +417,8 @@
 
   function telaInicio(){
     corpo.innerHTML = cabecalho() +
-      '<div class="qz-intro"><h3 class="qz-h">Bloco ' + Q.bloco.id + '</h3><p>Este bloco tem <b>' + Q.perguntas.length + ' perguntas</b> de marcar. Toque na resposta e a próxima pergunta aparece. Para voltar, use <b>Voltar</b> ou deslize para o lado.</p>' +
-      '<ul><li>Você só pode enviar este bloco uma vez.</li><li>Cada acerto vale 1 ponto. O desempate é por menor tempo.</li></ul>' +
-      '<button class="btn btn-primary btn-block" id="qzComecar">Começar</button></div>';
+      '<div class="qz-intro"><h3 class="qz-h">Vamos começar!</h3><p>São <b>' + Q.perguntas.length + ' perguntas</b> de marcar. Toque na resposta e a próxima aparece. Cada acerto vale 1 ponto; em caso de empate, vence quem responder mais rápido.</p>' +
+      '<button class="btn btn-primary btn-block" id="qzComecar">Vamos começar</button></div>';
     $('#qzComecar').addEventListener('click', function(){ Q.comecou = true; Q.inicio = Date.now(); telaQuiz(); });
   }
 
@@ -474,7 +478,7 @@
 
   function enviar(){
     corpo.innerHTML = cabecalho() + '<div class="qz-load"><span class="spin"></span>Enviando suas respostas...</div>';
-    var u = inscrito(), b = Q.bloco;
+    var u = pessoa(), b = Q.bloco;
     var dados = { acao: 'resposta', email: u.email, nome: u.nome, bloco: b.id, respostas: Q.resp, tempoNoAparelho: Math.round((Date.now() - Q.inicio) / 1000) };
     var envio = ENDPOINT ? apiPost(dados) : Promise.resolve({ ok: true });
     envio.then(function(res){
@@ -582,7 +586,7 @@
     /* quiz.html?bloco=N abre o bloco direto (vindo da página de inscrição) */
     if(PAGINA === 'quiz'){
       var m = location.search.match(/[?&]bloco=(\d+)/);
-      if(m && inscrito()) abrirBloco(+m[1]);
+      if(m && pessoa()) abrirBloco(+m[1]);
     }
 
     /* header, menu, FAQ, fade-in */

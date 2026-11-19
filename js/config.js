@@ -11,6 +11,10 @@ window.QUIZ_CONFIG = {
      aparelho da pessoa e as perguntas vêm de js/perguntas-demo.js. */
   endpoint: '',
 
+  /* Versão demonstrativa: true = qualquer pessoa vê e responde o quiz sem se inscrever.
+     Trocar para false quando o quiz valer (aí a inscrição volta a ser obrigatória). */
+  demonstracao: true,
+
   /* WhatsApp de atendimento (dúvidas sobre o quiz) */
   whatsapp: '5585998302705',
   whatsappTexto: '(85) 99830-2705',
