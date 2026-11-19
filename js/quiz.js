@@ -539,6 +539,30 @@
     }
   }
 
+
+  /* ---------- botão "Versão mobile": mostra a página dentro de um celular (para apresentar no computador) ---------- */
+  function iniciarVersaoMobile(){
+    if(window.top !== window.self || window.innerWidth <= 1024) return;
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'vm-btn';
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>Versão mobile';
+    var over = document.createElement('div');
+    over.className = 'vm-over'; over.hidden = true;
+    over.innerHTML = '<div class="vm-phone"><iframe title="Versão mobile" allow="clipboard-write"></iframe></div><button type="button" class="vm-fechar">Voltar ao computador</button>';
+    document.body.appendChild(btn); document.body.appendChild(over);
+    var frame = over.querySelector('iframe');
+    function abrir(){
+      frame.src = (location.pathname.split('/').pop() || 'index.html') + location.search + location.hash;
+      over.hidden = false; document.body.classList.add('no-scroll');
+    }
+    function fechar(){
+      over.hidden = true; frame.removeAttribute('src'); document.body.classList.remove('no-scroll');
+    }
+    btn.addEventListener('click', abrir);
+    over.querySelector('.vm-fechar').addEventListener('click', fechar);
+    over.addEventListener('click', function(ev){ if(ev.target === over) fechar(); });
+    document.addEventListener('keydown', function(ev){ if(ev.key === 'Escape' && !over.hidden) fechar(); });
+  }
   /* ---------- início ---------- */
   function carregarAgendaOficial(){
     if(!ENDPOINT) return Promise.resolve();
@@ -553,6 +577,7 @@
 
   document.addEventListener('DOMContentLoaded', function(){
     modal = $('#quizModal'); corpo = $('#quizCorpo'); pop = $('#popModal'); popCorpo = $('#popCorpo');
+    iniciarVersaoMobile();
     montarCampos();
     preencherTextos();
     iniciarFormularios();
