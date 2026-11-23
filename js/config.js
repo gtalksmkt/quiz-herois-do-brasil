@@ -63,7 +63,7 @@ window.QUIZ_CONFIG = {
      "whatsapp" = número comercial com DDI e DDD (ex.: 5585999999999); vazio = não mostra o botão.
      "texto" vazio = não mostra descrição. */
   realizadores: [
-    { nome: 'Emergency Talks', logo: 'img/emergency-logo.png', site: 'https://grupotalks.com.br', whatsapp: '558597345004', texto: 'A Emergency Talks é uma das referências na formação de médicos emergencistas e de outras especialidades no Brasil. Com aulas objetivas, baseadas em evidências e na prática real, já impactou milhares de alunos em todo o país, com preparatórios e cursos online e presenciais.' },
+    { nome: 'Emergency Talks', logo: 'img/emergency-logo.png', site: 'https://grupotalks.com.br', whatsapp: '558597345004', texto: 'A Emergency Talks é uma das referências na formação de médicos emergencistas e de outras especialidades no Brasil. Com aulas objetivas, baseadas em evidências e na prática real, já impactou milhares de alunos em todo o país, com preparatórios, cursos online e presenciais.' },
     { nome: 'Omni', logo: 'img/omni.webp', site: 'https://emergenciaomni.com.br/', whatsapp: '5519996359705', texto: 'Escola de via aérea na emergência, criada por e para médicos emergencistas. Seu curso presencial, o The Difficult Airway Course, une teoria, simulação em manequins e dispositivos do plantão, com mais de 3.000 pessoas treinadas.' },
     { nome: 'ECME', logo: 'img/ecme.webp', site: 'https://ecmebrasil.com.br/', whatsapp: '5588992612891', texto: 'Polo de educação médica em medicina de emergência, construído por médicos emergencistas. Une evidência científica, prática real e gestão de alta performance em formações como a ECME Business School e o ECME Mentorship Program.' }
   ]
