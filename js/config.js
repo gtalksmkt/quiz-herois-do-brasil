@@ -64,7 +64,7 @@ window.QUIZ_CONFIG = {
      "texto" vazio = não mostra descrição. */
   realizadores: [
     { nome: 'Emergency Talks', logo: 'img/emergency-logo.png', site: 'https://grupotalks.com.br', whatsapp: '', texto: 'Escola de medicina de emergência do Grupo Talks, com cursos e preparatórios para quem atua na emergência.' },
-    { nome: 'Omni', logo: 'img/omni.webp', site: 'https://emergenciaomni.com.br/', whatsapp: '', texto: '' },
-    { nome: 'ECME', logo: 'img/ecme.webp', site: 'https://ecmebrasil.com.br/', whatsapp: '', texto: '' }
+    { nome: 'Omni', logo: 'img/omni.webp', site: 'https://emergenciaomni.com.br/', whatsapp: '5519996359705', texto: 'Escola de via aérea na emergência, criada por e para médicos emergencistas. Seu curso presencial, o The Difficult Airway Course, une teoria, simulação em manequins e dispositivos do plantão, com mais de 3.000 pessoas treinadas.' },
+    { nome: 'ECME', logo: 'img/ecme.webp', site: 'https://ecmebrasil.com.br/', whatsapp: '5588992612891', texto: 'Polo de educação médica em medicina de emergência, construído por médicos emergencistas. Une evidência científica, prática real e gestão de alta performance em formações como a ECME Business School e o ECME Mentorship Program.' }
   ]
 };

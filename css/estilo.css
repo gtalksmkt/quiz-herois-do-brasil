@@ -563,3 +563,4 @@ section{padding:clamp(64px,8vw,104px) 0}
 .rz-card{background:rgba(255,255,255,.05)}
 footer{background:#0b1436;border-top:1px solid rgba(255,255,255,.08)}
 .foot-tag{font-family:var(--mono);letter-spacing:2px}
+.rz-wa{margin-top:auto}
