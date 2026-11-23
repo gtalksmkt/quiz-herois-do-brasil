@@ -42,8 +42,6 @@ window.QUIZ_CONFIG = {
     'Médico(a) residente',
     'Estudante de medicina',
     'Enfermeiro(a)',
-    'Técnico(a) de enfermagem',
-    'Outro profissional da saúde',
     'Outro'
   ],
 
@@ -51,25 +49,22 @@ window.QUIZ_CONFIG = {
   pergunta2027: 'Em 2027, o que você quer oferecer mais para o seu paciente?',
   interesses: [
     'Título de especialista',
-    'Mais preparo em via aérea',
-    'Mais preparo em parada cardiorrespiratória',
-    'Mais preparo em choque e sepse',
-    'Mais preparo em trauma',
-    'Mais preparo em ultrassom à beira-leito (POCUS)',
-    'Mais segurança nos plantões',
-    'Cursos de atualização em geral'
+    'Maior segurança em manejo de via aérea',
+    'Formação em gestão',
+    'Atualização em emergência'
   ],
 
-  /* Prêmio: só existe o vencedor (quem acertar mais; empate = menor tempo) */
+  /* Prêmio: só existe o vencedor (quem acertar mais; empate = quem respondeu primeiro) */
   premios: [
-    { posicao: 'Vencedor', nome: 'Videolaringoscópio', texto: 'Para quem acertar mais perguntas nos 5 blocos. Em caso de empate, vence quem respondeu mais rápido.' }
+    { posicao: 'Vencedor', nome: 'Videolaringoscópio', texto: 'Para quem acertar mais perguntas nos 5 blocos. Em caso de empate, vence quem respondeu primeiro (o tempo conta desde a liberação de cada bloco).' }
   ],
 
-  /* Realizadores (aparecem no fim da página). "logo" = arquivo em img/.
+  /* Realizadores (aparecem no fim da página). "logo" = arquivo em img/. "site" = página da marca (as logos do topo e do rodapé levam para lá).
+     "whatsapp" = número comercial com DDI e DDD (ex.: 5585999999999); vazio = não mostra o botão.
      "texto" vazio = não mostra descrição. */
   realizadores: [
-    { nome: 'Emergency Talks', logo: 'img/emergency-logo.png', texto: 'Escola de medicina de emergência do Grupo Talks, com cursos e preparatórios para quem atua na emergência.' },
-    { nome: 'Omni', logo: 'img/omni.webp', texto: '' },
-    { nome: 'ECME', logo: 'img/ecme.webp', texto: '' }
+    { nome: 'Emergency Talks', logo: 'img/emergency-logo.png', site: 'https://emergencytalks.com.br', whatsapp: '', texto: 'Escola de medicina de emergência do Grupo Talks, com cursos e preparatórios para quem atua na emergência.' },
+    { nome: 'Omni', logo: 'img/omni.webp', site: '', whatsapp: '', texto: '' },
+    { nome: 'ECME', logo: 'img/ecme.webp', site: '', whatsapp: '', texto: '' }
   ]
 };

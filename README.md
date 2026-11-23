@@ -1,6 +1,6 @@
 # Quiz CBMEDE
 
-Landing do quiz de medicina de emergência da Emergency Talks: a pessoa se inscreve e responde a 30 perguntas, em 5 blocos de 6, para concorrer a um videolaringoscópio. O vencedor é anunciado no sábado, ao meio-dia.
+Landing do quiz de medicina de emergência da Emergency Talks: a pessoa se inscreve (nome, e-mail, WhatsApp, CPF, categoria) e responde a 30 perguntas, em 5 blocos de 6, para concorrer a um videolaringoscópio. O vencedor é anunciado no sábado, ao meio-dia.
 
 No ar: https://gtalksmkt.github.io/quiz-herois-do-brasil/ (com `noindex` até as pendências serem resolvidas). O nome do repositório ainda é o antigo; será trocado depois.
 
@@ -34,4 +34,4 @@ Para testar tudo fora do horário: abra `index.html?teste=1` (só funciona no mo
 
 ## Pontuação
 
-1 ponto por acerto, somando todos os blocos. Desempate: menor tempo total (do momento em que a pessoa abre o bloco até enviar, medido no servidor). Ranking: na planilha, menu **Quiz > Atualizar ranking**.
+1 ponto por acerto, somando todos os blocos. Desempate: quem respondeu primeiro, medido no servidor pelo tempo entre a liberação de cada bloco e o envio das respostas (somado nos 5 blocos). Ranking: na planilha, menu **Quiz > Atualizar ranking**.

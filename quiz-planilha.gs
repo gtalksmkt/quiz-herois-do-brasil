@@ -35,9 +35,9 @@ var ANUNCIO = '2026-11-28T12:00'; // anúncio do vencedor (mesmo valor de js/con
 var ABAS = {
   blocos:    { nome: 'Blocos',    colunas: ['Bloco', 'Abre', 'Fecha'] },
   perguntas: { nome: 'Perguntas', colunas: ['Bloco', 'Ordem', 'Pergunta', 'A', 'B', 'C', 'D', 'Correta'] },
-  inscritos: { nome: 'Inscritos', colunas: ['Data', 'Nome', 'E-mail', 'WhatsApp', 'Categoria', 'Interesses 2027', 'Aceita mensagens', 'Origem'] },
-  respostas: { nome: 'Respostas', colunas: ['Data', 'Bloco', 'E-mail', 'Nome', 'Respostas', 'Acertos', 'Total', 'Tempo (s)'] },
-  ranking:   { nome: 'Ranking',   colunas: ['Posição', 'Nome', 'E-mail', 'WhatsApp', 'Blocos respondidos', 'Acertos', 'Tempo total (s)'] }
+  inscritos: { nome: 'Inscritos', colunas: ['Data', 'Nome', 'E-mail', 'WhatsApp', 'CPF', 'Categoria', 'Interesses 2027', 'Aceita mensagens', 'Origem'] },
+  respostas: { nome: 'Respostas', colunas: ['Data', 'Bloco', 'E-mail', 'Nome', 'Respostas', 'Acertos', 'Total', 'Tempo desde a liberação (s)'] },
+  ranking:   { nome: 'Ranking',   colunas: ['Posição', 'Nome', 'E-mail', 'WhatsApp', 'Blocos respondidos', 'Acertos', 'Tempo total desde a liberação (s)'] }
 };
 
 /* ---------------- utilidades ---------------- */
@@ -108,9 +108,6 @@ function doGet(e){
     if(!b || !aberto_(b)) return json_({ ok: false, erro: 'fechada' });
     if(!email || !inscrito_(email)) return json_({ ok: false, erro: 'inscricao' });
     if(respondidos_(email).indexOf(b.id) >= 0) return json_({ ok: false, erro: 'respondida' });
-    /* marca a hora em que a pessoa abriu o bloco (para o desempate por tempo) */
-    var cache = CacheService.getScriptCache(), chave = 'abriu|' + b.id + '|' + email;
-    if(!cache.get(chave)) cache.put(chave, String(Date.now()), 21600);
     return json_({ ok: true, perguntas: perguntas_(b.id).map(function(q){ return { p: q.p, o: q.o }; }) });
   }
 
@@ -131,7 +128,7 @@ function doPost(e){
       if(inscrito_(email)) return json_({ ok: true, repetido: true });
       var interesses = (d.interesses || []).map(function(x){ return String(x).slice(0, 80); }).slice(0, 12).join(' | ');
       aba_('inscritos').appendRow([
-        new Date(), String(d.nome || '').slice(0, 100), email, "'" + digitos_(d.whatsapp).slice(0, 13),
+        new Date(), String(d.nome || '').slice(0, 100), email, "'" + digitos_(d.whatsapp).slice(0, 13), "'" + digitos_(d.cpf).slice(0, 11),
         String(d.categoria || '').slice(0, 60), interesses, d.aceite ? 'Sim' : 'Não', String(d.origem || '').slice(0, 200)
       ]);
       return json_({ ok: true });
@@ -150,8 +147,7 @@ function doPost(e){
         letras.push(k >= 0 ? 'ABCDE'.charAt(k) : '-');
         if(k >= 0 && k === qs[i].correta) acertos++;
       }
-      var abriu = +CacheService.getScriptCache().get('abriu|' + b.id + '|' + email);
-      var tempo = abriu ? Math.round((Date.now() - abriu) / 1000) : Math.max(0, Math.round(+d.tempoNoAparelho || 0));
+      var tempo = Math.max(0, Math.round((Date.now() - quando_(b.abre).getTime()) / 1000)); // segundos desde que o bloco foi liberado
       aba_('respostas').appendRow([new Date(), b.id, email, ins.nome, letras.join(','), acertos, qs.length, tempo]);
       return json_({ ok: true }); // o acerto não volta para o site, de propósito
     }

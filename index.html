@@ -25,7 +25,7 @@
 <!-- HEADER -->
 <header class="header">
   <div class="container nav">
-    <a href="index.html" class="brands" aria-label="Quiz CBMEDE: ECME, Emergency Talks e Omni"><img class="br-ecme" src="img/ecme.webp" alt="ECME" /><i class="br-sep"></i><img src="img/emergency-logo.png" alt="Emergency Talks" /><i class="br-sep"></i><img class="br-omni" src="img/omni.webp" alt="Omni" /></a>
+    <div class="brands" aria-label="Quiz CBMEDE: ECME, Emergency Talks e Omni"><a class="br-link" data-marca="ECME" target="_blank" rel="noopener"><img class="br-ecme" src="img/ecme.webp" alt="ECME" /></a><i class="br-sep"></i><a class="br-link" data-marca="Emergency Talks" target="_blank" rel="noopener"><img src="img/emergency-logo.png" alt="Emergency Talks" /></a><i class="br-sep"></i><a class="br-link" data-marca="Omni" target="_blank" rel="noopener"><img class="br-omni" src="img/omni.webp" alt="Omni" /></a></div>
     <nav class="nav-links" aria-label="Seções">
       <a href="#como-funciona">Como funciona</a>
       <a href="#caminho">O caminho</a>
@@ -87,15 +87,16 @@
           <div class="f-field"><label for="fEmail">E-mail</label><input id="fEmail" name="email" type="email" autocomplete="email" inputmode="email" placeholder="voce@email.com" required /></div>
           <div class="f-field"><label for="fWhats">WhatsApp com DDD</label><input id="fWhats" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" placeholder="(85) 99999-9999" required /></div>
         </div>
+        <div class="f-field"><label for="fCpf">CPF</label><input id="fCpf" name="cpf" type="text" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" maxlength="14" required /></div>
         <div class="f-field"><label for="fCategoria">Categoria profissional</label>
           <select id="fCategoria" name="categoria" required><option value="">Escolha uma opção</option></select></div>
         <fieldset class="f-set">
           <legend id="fPergunta2027">Em 2027, o que você quer oferecer mais para o seu paciente?</legend>
-          <span class="f-hint">Pode marcar mais de uma opção.</span>
+          <span class="f-hint">Marque as opções que fazem sentido para você.</span>
           <div class="f-chips" id="fInteresses"></div>
         </fieldset>
         <label class="f-check"><input type="checkbox" name="regulamento" />Li e aceito o <a href="#regulamento">regulamento do quiz</a>.</label>
-        <label class="f-check"><input type="checkbox" name="aceite" checked />Aceito receber mensagens da Emergency Talks, da ECME e da Omni, por WhatsApp e e-mail, com atualizações sobre o quiz e os cursos.</label>
+        <label class="f-check"><input type="checkbox" name="aceite" />Aceito receber mensagens da Emergency Talks, da ECME e da Omni, por WhatsApp e e-mail, com atualizações sobre o quiz e os cursos.</label>
         <p class="f-msg" id="msgInscricao" role="alert"></p>
         <button type="submit" class="btn btn-primary btn-block">Fazer minha inscrição</button>
       </form>
@@ -183,7 +184,7 @@
         <div>
           <span class="pz-pos">Vencedor</span>
           <h3>Videolaringoscópio</h3>
-          <p>Quem acertar mais perguntas nos 5 blocos leva o aparelho. Em caso de empate, vence quem respondeu mais rápido: os blocos são liberados em horários marcados, e quem responde antes sai na frente.</p>
+          <p>Quem acertar mais perguntas nos 5 blocos leva o aparelho. Em caso de empate, vence quem respondeu primeiro: o tempo conta a partir da hora em que cada bloco é liberado, e quem responde antes sai na frente.</p>
         </div>
       </div>
     </div>
@@ -200,10 +201,10 @@
       <h2>Regras e <span class="accent">dúvidas</span></h2>
     </div>
     <div class="faq-list">
-      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Quem pode participar?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Médicos, residentes, estudantes de medicina, enfermeiros, técnicos de enfermagem e outros profissionais da saúde que fizerem a inscrição nesta página. A inscrição é gratuita.</p></div></div></div>
+      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Quem pode participar?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Quem fizer a inscrição nesta página e também estiver inscrito no Congresso CBMEDE 2026. A inscrição no quiz é gratuita.</p></div></div></div>
       <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Quando os blocos abrem?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>São 5 blocos de 6 perguntas (30 no total), no horário de Brasília: <span data-c="agenda"></span>. Cada bloco fica trancado com um cadeado até o horário dele.</p></div></div></div>
       <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Quando sai o resultado?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>O vencedor é anunciado <span data-c="anuncio"></span>. As equipes das empresas realizadoras também entram em contato pelo WhatsApp e pelo e-mail informados na inscrição. Por isso, confira se os dados estão certos.</p></div></div></div>
-      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Como é feita a pontuação?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Cada resposta certa vale 1 ponto. Somamos os pontos de todos os blocos que você responder. Em caso de empate, fica na frente quem gastou menos tempo, somando o tempo entre abrir e enviar cada bloco.</p></div></div></div>
+      <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Como é feita a pontuação?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Cada resposta certa vale 1 ponto. Somamos os pontos de todos os blocos que você responder. A pontuação conta a partir da hora em que cada bloco é liberado. Em caso de empate nos acertos, fica na frente quem respondeu primeiro: somamos o tempo entre a liberação de cada bloco e o envio das respostas.</p></div></div></div>
       <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Posso responder mais de uma vez?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Não. Cada pessoa envia cada bloco uma vez só. Vale o primeiro envio. Inscrições repetidas com o mesmo e-mail contam como uma só.</p></div></div></div>
       <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Perdi um bloco. Ainda posso ganhar?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Pode. O bloco que você perdeu não soma pontos, mas você continua participando dos próximos. Quanto mais blocos você responder, mais chances tem.</p></div></div></div>
       <div class="faq-item fade-in"><button class="faq-q" aria-expanded="false">Atualizei a página. Preciso me inscrever de novo?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Não. Clique em <b>Já fiz minha inscrição</b>, no topo da página, e digite o seu e-mail. O quiz abre na hora.</p></div></div></div>
@@ -240,7 +241,7 @@
 <footer>
   <div class="container">
     <p class="foot-tag">Um quiz realizado por</p>
-    <div class="brands brands-foot"><img class="br-ecme" src="img/ecme.webp" alt="ECME" /><i class="br-sep"></i><img src="img/emergency-logo.png" alt="Emergency Talks" /><i class="br-sep"></i><img class="br-omni" src="img/omni.webp" alt="Omni" /></div>
+    <div class="brands brands-foot"><a class="br-link" data-marca="ECME" target="_blank" rel="noopener"><img class="br-ecme" src="img/ecme.webp" alt="ECME" /></a><i class="br-sep"></i><a class="br-link" data-marca="Emergency Talks" target="_blank" rel="noopener"><img src="img/emergency-logo.png" alt="Emergency Talks" /></a><i class="br-sep"></i><a class="br-link" data-marca="Omni" target="_blank" rel="noopener"><img class="br-omni" src="img/omni.webp" alt="Omni" /></a></div>
     <p class="foot-copy">© ECME · Emergency Talks · Omni. Quiz CBMEDE.</p>
   </div>
 </footer>

@@ -177,6 +177,20 @@
     if(d.length <= 7) return '(' + d.slice(0, 2) + ') ' + d.slice(2);
     return '(' + d.slice(0, 2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4);
   }
+  function mascaraCpf(v){
+    var d = soDigitos(v).slice(0, 11);
+    return d.replace(/^(\d{3})(\d)/, '$1.$2').replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3').replace(/\.(\d{3})(\d)/, '.$1-$2');
+  }
+  function cpfOk(c){
+    c = soDigitos(c);
+    if(c.length !== 11 || /^(\d)\1{10}$/.test(c)) return false;
+    for(var t = 9; t < 11; t++){
+      var s = 0;
+      for(var i = 0; i < t; i++) s += +c.charAt(i) * (t + 1 - i);
+      if(((s * 10) % 11) % 10 !== +c.charAt(t)) return false;
+    }
+    return true;
+  }
   var aba = 'inscrever';
   function mostrarAba(nome){
     aba = nome;
@@ -254,6 +268,8 @@
     if(form){
     var tel = form.elements.whatsapp;
     tel.addEventListener('input', function(){ tel.value = mascaraTel(tel.value); });
+    var cpf = form.elements.cpf;
+    cpf.addEventListener('input', function(){ cpf.value = mascaraCpf(cpf.value); });
     $('#tabInscrever').addEventListener('click', function(){ mostrarAba('inscrever'); });
     $('#tabEntrar').addEventListener('click', function(){ mostrarAba('entrar'); entrar.elements.email.focus({ preventScroll: true }); });
 
@@ -266,6 +282,7 @@
         nome: f.nome.value.trim(),
         email: f.email.value.trim().toLowerCase(),
         whatsapp: soDigitos(f.whatsapp.value),
+        cpf: soDigitos(f.cpf.value),
         categoria: f.categoria.value,
         interesses: interesses,
         aceite: f.aceite.checked,
@@ -276,7 +293,9 @@
       if(dados.whatsapp.length < 10) return msg(aviso, 'Digite o WhatsApp com DDD.', 'erro');
       if(!dados.categoria) return msg(aviso, 'Escolha a sua categoria profissional.', 'erro');
       if(!interesses.length) return msg(aviso, 'Marque pelo menos uma opção sobre 2027.', 'erro');
+      if(!cpfOk(dados.cpf)) return msg(aviso, 'Confira o CPF.', 'erro');
       if(!f.regulamento.checked) return msg(aviso, 'Para participar, aceite o regulamento do quiz.', 'erro');
+      if(!f.aceite.checked) return msg(aviso, 'Para participar, marque também a autorização de mensagens.', 'erro');
 
       var bt = form.querySelector('button[type=submit]');
       bt.disabled = true; bt.textContent = 'Enviando...';
@@ -338,11 +357,19 @@
       return '<label class="f-chip"><input type="checkbox" name="interesse" value="' + esc(t) + '" /><span>' + esc(t) + '</span></label>';
     }).join('');
     var rz = $('#realizadoresLista');
+    var wa = function(r){ return 'https://wa.me/' + soDigitos(r.whatsapp) + '?text=' + encodeURIComponent('Olá! Vim pelo Quiz CBMEDE e gostaria de saber mais sobre a ' + r.nome + '.'); };
     if(rz) rz.innerHTML = (C.realizadores || []).map(function(r){
+      var marca = r.logo ? '<img src="' + esc(r.logo) + '" alt="' + esc(r.nome) + '" loading="lazy" />' : '<span class="rz-word">' + esc(r.nome) + '</span>';
       return '<div class="rz-card glass fade-in"><div class="rz-logo">' +
-        (r.logo ? '<img src="' + esc(r.logo) + '" alt="' + esc(r.nome) + '" loading="lazy" />' : '<span class="rz-word">' + esc(r.nome) + '</span>') + '</div>' +
-        (r.logo ? '<h3>' + esc(r.nome) + '</h3>' : '') + (r.texto ? '<p>' + esc(r.texto) + '</p>' : '') + '</div>';
+        (r.site ? '<a href="' + esc(r.site) + '" target="_blank" rel="noopener" aria-label="Site da ' + esc(r.nome) + '">' + marca + '</a>' : marca) + '</div>' +
+        (r.logo ? '<h3>' + esc(r.nome) + '</h3>' : '') + (r.texto ? '<p>' + esc(r.texto) + '</p>' : '') +
+        (r.whatsapp ? '<a class="btn btn-primary btn-sm rz-wa" href="' + wa(r) + '" target="_blank" rel="noopener">Falar no WhatsApp</a>' : '') + '</div>';
     }).join('');
+    /* logos do topo e do rodapé levam à página de cada marca */
+    $$('.br-link').forEach(function(a){
+      var m = (C.realizadores || []).filter(function(r){ return r.nome === a.getAttribute('data-marca'); })[0];
+      if(m && m.site) a.href = m.site; else a.removeAttribute('target');
+    });
   }
 
   /* ---------- janelas (popup e quiz) ---------- */
@@ -417,7 +444,7 @@
 
   function telaInicio(){
     corpo.innerHTML = cabecalho() +
-      '<div class="qz-intro"><h3 class="qz-h">Vamos começar!</h3><p>São <b>' + Q.perguntas.length + ' perguntas</b> de marcar. Toque na resposta e a próxima aparece. Cada acerto vale 1 ponto; em caso de empate, vence quem responder mais rápido.</p>' +
+      '<div class="qz-intro"><h3 class="qz-h">Vamos começar!</h3><p>São <b>' + Q.perguntas.length + ' perguntas</b> de marcar. Toque na resposta e a próxima aparece. Cada acerto vale 1 ponto; em caso de empate, vence quem responder primeiro (o tempo conta desde a liberação do bloco).</p>' +
       '<button class="btn btn-primary btn-block" id="qzComecar">Vamos começar</button></div>';
     $('#qzComecar').addEventListener('click', function(){ Q.comecou = true; Q.inicio = Date.now(); telaQuiz(); });
   }
