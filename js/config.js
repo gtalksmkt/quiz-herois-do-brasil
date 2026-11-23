@@ -63,8 +63,8 @@ window.QUIZ_CONFIG = {
      "whatsapp" = número comercial com DDI e DDD (ex.: 5585999999999); vazio = não mostra o botão.
      "texto" vazio = não mostra descrição. */
   realizadores: [
-    { nome: 'Emergency Talks', logo: 'img/emergency-logo.png', site: 'https://emergencytalks.com.br', whatsapp: '', texto: 'Escola de medicina de emergência do Grupo Talks, com cursos e preparatórios para quem atua na emergência.' },
-    { nome: 'Omni', logo: 'img/omni.webp', site: '', whatsapp: '', texto: '' },
-    { nome: 'ECME', logo: 'img/ecme.webp', site: '', whatsapp: '', texto: '' }
+    { nome: 'Emergency Talks', logo: 'img/emergency-logo.png', site: 'https://grupotalks.com.br', whatsapp: '', texto: 'Escola de medicina de emergência do Grupo Talks, com cursos e preparatórios para quem atua na emergência.' },
+    { nome: 'Omni', logo: 'img/omni.webp', site: 'https://emergenciaomni.com.br/', whatsapp: '', texto: '' },
+    { nome: 'ECME', logo: 'img/ecme.webp', site: 'https://ecmebrasil.com.br/', whatsapp: '', texto: '' }
   ]
 };
