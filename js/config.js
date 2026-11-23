@@ -69,7 +69,7 @@ window.QUIZ_CONFIG = {
      "texto" vazio = não mostra descrição. */
   realizadores: [
     { nome: 'Emergency Talks', logo: 'img/emergency-logo.png', texto: 'Escola de medicina de emergência do Grupo Talks, com cursos e preparatórios para quem atua na emergência.' },
-    { nome: 'Omni', logo: '', texto: '' },
-    { nome: 'ECME', logo: 'img/ecme.png', texto: '' }
+    { nome: 'Omni', logo: 'img/omni.webp', texto: '' },
+    { nome: 'ECME', logo: 'img/ecme.webp', texto: '' }
   ]
 };
