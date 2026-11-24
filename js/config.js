@@ -23,8 +23,7 @@ window.QUIZ_CONFIG = {
      "fecha" = até quando dá para responder o bloco (por enquanto, todos ficam
      abertos até pouco antes de anunciar o vencedor). */
   blocos: [
-    /* ⚠️ Bloco 1 aberto de propósito, só para mostrar o quiz. Na hora de valer, voltar para '2026-11-26T12:00'. */
-    { id: 1, abre: '2026-11-19T00:00', fecha: '2026-11-28T11:00' },
+    { id: 1, abre: '2026-11-26T12:00', fecha: '2026-11-28T11:00' },
     { id: 2, abre: '2026-11-26T18:00', fecha: '2026-11-28T11:00' },
     { id: 3, abre: '2026-11-27T08:00', fecha: '2026-11-28T11:00' },
     { id: 4, abre: '2026-11-27T12:00', fecha: '2026-11-28T11:00' },
