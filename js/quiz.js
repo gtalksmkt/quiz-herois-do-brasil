@@ -475,7 +475,7 @@
       av.disabled = ultima ? !todas : Q.resp[Q.i] == null;
       $$('.qz-slide', track).forEach(function(s, k){ s.setAttribute('aria-hidden', k === Q.i ? 'false' : 'true'); });
     }
-    function ir(i){ Q.i = Math.max(0, Math.min(n - 1, i)); atualizar(); }
+    function ir(i){ Q.i = Math.max(0, Math.min(n - 1, i)); atualizar(); var cartao = $('#quizModal .qz-card'); if(cartao) cartao.scrollTop = 0; }
     track.addEventListener('click', function(ev){
       var b = ev.target.closest && ev.target.closest('.qz-op'); if(!b) return;
       var slide = b.closest('.qz-slide'), si = $$('.qz-slide', track).indexOf(slide);

@@ -564,3 +564,12 @@ section{padding:clamp(64px,8vw,104px) 0}
 footer{background:#0b1436;border-top:1px solid rgba(255,255,255,.08)}
 .foot-tag{font-family:var(--mono);letter-spacing:2px}
 .rz-wa{margin-top:auto}
+
+/* perguntas longas: o cartão rola e os botões Voltar/Próxima ficam sempre visíveis */
+.qz-nav{position:sticky;bottom:-1px;z-index:2;padding:14px 0 4px;margin-top:0;background:linear-gradient(180deg,rgba(14,24,64,0),#0e1840 30%)}
+@media (max-width:760px){
+  #quizModal .qz-card{display:block;justify-content:initial;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-top:60px}
+}
+.qz-q{font-size:clamp(.98rem,1.8vw,1.15rem);font-weight:600;line-height:1.5;margin-bottom:16px}
+.qz-op{font-size:.93rem;padding:12px 14px;align-items:flex-start}
+.qz-l{margin-top:1px}
