@@ -127,6 +127,7 @@ function doPost(e){
   try{
     if(d.acao === 'inscricao'){
       if(inscrito_(email)) return json_({ ok: true, repetido: true });
+      if(cpfJaInscrito_(digitos_(d.cpf))) return json_({ ok: false, erro: 'cpf' }); // um CPF = uma inscrição
       var interesses = (d.interesses || []).map(function(x){ return String(x).slice(0, 80); }).slice(0, 12).join(' | ');
       aba_('inscritos').appendRow([
         new Date(), String(d.nome || '').slice(0, 100), email, "'" + digitos_(d.whatsapp).slice(0, 13), "'" + digitos_(d.cpf).slice(0, 11),
@@ -223,4 +224,12 @@ function enviarParaCRM_(d, email, interesses){
       })
     });
   }catch(err){ console.error('CRM: ' + err); }
+}
+
+/* Um CPF só pode ter uma inscrição (evita várias chances no prêmio com e-mails diferentes). */
+function cpfJaInscrito_(cpf){
+  if(!cpf) return false;
+  var v = aba_('inscritos').getDataRange().getValues(); // coluna 5 = CPF
+  for(var i = 1; i < v.length; i++) if(digitos_(v[i][4]) === cpf) return true;
+  return false;
 }

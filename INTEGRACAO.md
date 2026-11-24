@@ -2,6 +2,29 @@
 
 Hoje o site funciona em **modo demonstração**: inscrição e respostas ficam só no aparelho de quem testa. Para valer, é preciso ligar um back-end e o CRM. Este arquivo descreve o que o site espera.
 
+## ✅ O que os devs precisam fazer (lista)
+
+**Antes do dia 26/11, 12h (bloco 1):**
+
+1. [ ] **Ativar o back-end** (conta Google da empresa): criar a planilha, colar `quiz-planilha.gs` no Apps Script, rodar a função `configurar`, publicar como App da Web (executar como "Eu", acesso "Qualquer pessoa") e copiar o endereço `/exec`.
+2. [ ] **Colar o `/exec` em `js/config.js`** (campo `endpoint`) e publicar o site. Isso desliga o modo demonstração e passa a usar os dados reais.
+3. [ ] **Carregar as 30 perguntas oficiais** na aba **Perguntas** da planilha (arquivo `perguntas-oficiais.csv` com o gabarito, que o time envia por fora; nunca no repositório).
+4. [ ] **Conferir a aba Blocos** com os horários certos (26/11 12h e 18h; 27/11 8h, 12h e 18h) e o `anuncio` (28/11 12h) no script.
+5. [ ] **Ligar o CRM:** preencher `CRM_WEBHOOK` no script (ou trocar `enviarParaCRM_` pela integração real). Cada nova inscrição chega em JSON com nome, e-mail, WhatsApp, CPF, categoria, interesses de 2027, aceite de mensagens, aceite do regulamento e hora do aceite.
+6. [ ] **Conferir quem está inscrito no Congresso CBMEDE 2026.** O regulamento exige isso e o site não checa. Cruzar a lista de inscritos do Congresso (por CPF ou e-mail) com a aba **Inscritos** e desclassificar quem não estiver.
+7. [ ] **Testar de ponta a ponta** antes de abrir: uma inscrição de teste, o retorno pelo e-mail, um bloco respondido, a linha na aba **Respostas** e o ranking (**Quiz > Atualizar ranking**). Apagar os testes depois.
+8. [ ] **Restringir o acesso** à planilha e ao CRM (há CPF; LGPD).
+
+**Durante o quiz:**
+
+9. [ ] Acompanhar a aba **Respostas** e, se algum bloco precisar de ajuste de horário, mudar na aba **Blocos** (o site lê de lá).
+
+**Depois do quiz (sábado, 28/11, 12h):**
+
+10. [ ] Rodar **Quiz > Atualizar ranking**. O vencedor é quem tem **mais acertos**; no empate, **menor tempo total desde a liberação dos blocos**. Conferir se o vencedor está inscrito no Congresso antes de anunciar.
+
+**Já feito pelo time (não precisa refazer):** validação do CPF no formulário; **bloqueio de CPF repetido** (um CPF = uma inscrição; o e-mail repetido só reabre a mesma inscrição); aceites obrigatórios; layout, textos, logos e links das marcas. **As 30 perguntas com o gabarito NÃO estão no código** (o repositório é público): o time envia o arquivo `perguntas-oficiais.csv` aos devs por fora (item 3).
+
 ## Regra de acesso
 
 - Só **quem está inscrito** responde ao quiz (`demonstracao: false` em `js/config.js`).

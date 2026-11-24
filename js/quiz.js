@@ -12,7 +12,7 @@
   var ENDPOINT = (C.endpoint || '').trim();
   var TESTE = /[?&]teste=1\b/.test(location.search) && !ENDPOINT;
   var PAGINA = document.body.getAttribute('data-page') || 'inicio'; // 'inicio' (inscrição) ou 'quiz'
-  var LS = { inscrito: 'qcb.inscrito', respostas: 'qcb.respostas', demoInscritos: 'qcb.demo.inscritos' };
+  var LS = { inscrito: 'qcb.inscrito', respostas: 'qcb.respostas', demoInscritos: 'qcb.demo.inscritos', demoCpfs: 'qcb.demo.cpfs' };
   var $ = function(s, r){ return (r || document).querySelector(s); };
   var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
@@ -304,7 +304,9 @@
       msg(aviso, '');
       var envio = ENDPOINT ? apiPost(dados) : Promise.resolve({ ok: true });
       envio.then(function(r){
+        if(r && r.erro === 'cpf'){ msg(aviso, 'Este CPF já tem inscrição. Clique em "Já fiz minha inscrição" e entre com o e-mail usado.', 'erro'); return; }
         if(!r || !r.ok) throw new Error((r && r.erro) || 'erro');
+        if(!ENDPOINT){ var cp = lsGet(LS.demoCpfs, {}); if(cp[dados.cpf] && cp[dados.cpf] !== dados.email){ msg(aviso, 'Este CPF já tem inscrição. Clique em "Já fiz minha inscrição" e entre com o e-mail usado.', 'erro'); return; } cp[dados.cpf] = dados.email; lsSet(LS.demoCpfs, cp); }
         if(!ENDPOINT){ var lista = lsGet(LS.demoInscritos, {}); lista[dados.email] = dados.nome; lsSet(LS.demoInscritos, lista); }
         lsSet(LS.inscrito, { nome: dados.nome, email: dados.email });
         renderPainel(); renderTrilha();
