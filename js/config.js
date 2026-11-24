@@ -13,7 +13,7 @@ window.QUIZ_CONFIG = {
 
   /* Versão demonstrativa: true = qualquer pessoa vê e responde o quiz sem se inscrever.
      Trocar para false quando o quiz valer (aí a inscrição volta a ser obrigatória). */
-  demonstracao: true,
+  demonstracao: false,
 
   /* WhatsApp de atendimento (dúvidas sobre o quiz) */
   whatsapp: '5585998302705',

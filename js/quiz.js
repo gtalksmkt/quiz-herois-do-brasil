@@ -286,6 +286,8 @@
         categoria: f.categoria.value,
         interesses: interesses,
         aceite: f.aceite.checked,
+        regulamento: f.regulamento.checked,
+        aceiteEm: new Date().toISOString(),
         origem: location.href.slice(0, 200)
       };
       if(dados.nome.split(/\s+/).length < 2) return msg(aviso, 'Digite seu nome completo.', 'erro');

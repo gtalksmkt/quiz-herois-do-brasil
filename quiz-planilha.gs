@@ -31,11 +31,12 @@ var VERSAO = 2;
 var FUSO = 'America/Sao_Paulo';
 var PLANILHA_ID = ''; // vazio = planilha onde o script foi criado
 var ANUNCIO = '2026-11-28T12:00'; // anúncio do vencedor (mesmo valor de js/config.js)
+var CRM_WEBHOOK = ''; // endereço (URL) do CRM que recebe cada nova inscrição em JSON; vazio = não envia
 
 var ABAS = {
   blocos:    { nome: 'Blocos',    colunas: ['Bloco', 'Abre', 'Fecha'] },
   perguntas: { nome: 'Perguntas', colunas: ['Bloco', 'Ordem', 'Pergunta', 'A', 'B', 'C', 'D', 'Correta'] },
-  inscritos: { nome: 'Inscritos', colunas: ['Data', 'Nome', 'E-mail', 'WhatsApp', 'CPF', 'Categoria', 'Interesses 2027', 'Aceita mensagens', 'Origem'] },
+  inscritos: { nome: 'Inscritos', colunas: ['Data', 'Nome', 'E-mail', 'WhatsApp', 'CPF', 'Categoria', 'Interesses 2027', 'Aceita mensagens', 'Aceitou regulamento', 'Origem']  },
   respostas: { nome: 'Respostas', colunas: ['Data', 'Bloco', 'E-mail', 'Nome', 'Respostas', 'Acertos', 'Total', 'Tempo desde a liberação (s)'] },
   ranking:   { nome: 'Ranking',   colunas: ['Posição', 'Nome', 'E-mail', 'WhatsApp', 'Blocos respondidos', 'Acertos', 'Tempo total desde a liberação (s)'] }
 };
@@ -129,8 +130,9 @@ function doPost(e){
       var interesses = (d.interesses || []).map(function(x){ return String(x).slice(0, 80); }).slice(0, 12).join(' | ');
       aba_('inscritos').appendRow([
         new Date(), String(d.nome || '').slice(0, 100), email, "'" + digitos_(d.whatsapp).slice(0, 13), "'" + digitos_(d.cpf).slice(0, 11),
-        String(d.categoria || '').slice(0, 60), interesses, d.aceite ? 'Sim' : 'Não', String(d.origem || '').slice(0, 200)
+        String(d.categoria || '').slice(0, 60), interesses, d.aceite ? 'Sim' : 'Não', d.regulamento ? 'Sim' : 'Não', String(d.origem || '').slice(0, 200)
       ]);
+      enviarParaCRM_(d, email, interesses); // integração com o CRM (ver INTEGRACAO.md)
       return json_({ ok: true });
     }
 
@@ -203,4 +205,22 @@ function configurar(){
   aba_('inscritos'); aba_('respostas'); aba_('ranking');
   var padrao = ss_().getSheetByName('Página1') || ss_().getSheetByName('Sheet1');
   if(padrao && ss_().getSheets().length > 1 && padrao.getLastRow() === 0) ss_().deleteSheet(padrao);
+}
+
+/* ---------------- CRM ----------------
+   Cada nova inscrição é enviada (POST, JSON) para CRM_WEBHOOK, se preenchido.
+   Os devs podem trocar este bloco pela integração real do CRM. Falha no CRM não derruba a inscrição. */
+function enviarParaCRM_(d, email, interesses){
+  if(!CRM_WEBHOOK) return;
+  try{
+    UrlFetchApp.fetch(CRM_WEBHOOK, {
+      method: 'post', contentType: 'application/json', muteHttpExceptions: true,
+      payload: JSON.stringify({
+        origem: 'quiz-cbmede', inscritoEm: new Date().toISOString(),
+        nome: String(d.nome || ''), email: email, whatsapp: digitos_(d.whatsapp), cpf: digitos_(d.cpf),
+        categoria: String(d.categoria || ''), interesses2027: interesses,
+        aceitaMensagens: !!d.aceite, aceitouRegulamento: !!d.regulamento, aceiteEm: String(d.aceiteEm || ''), pagina: String(d.origem || '')
+      })
+    });
+  }catch(err){ console.error('CRM: ' + err); }
 }
